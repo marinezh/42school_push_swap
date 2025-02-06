@@ -6,12 +6,44 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 16:07:04 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/02/06 16:07:19 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/02/06 16:28:08 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <limits.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
 
+// Check if a string is a valid integer
+int is_number(const char *str)
+{
+    if (!str || *str == '\0') return 0;  // Empty string is invalid
 
+    int i = 0;
+    if (str[i] == '-' || str[i] == '+')  // Handle optional sign
+        i++;
+
+    if (!isdigit(str[i]))  // Must have at least one digit
+        return 0;
+
+    while (str[i])
+    {
+        if (!isdigit(str[i]))
+            return 0;
+        i++;
+    }
+    return 1;
+}
+
+// Convert string to integer with error handling (overflow/underflow)
+int safe_atoi(const char *str, int *error)
+{
+    long num = strtol(str, NULL, 10);
+    if (num > INT_MAX || num < INT_MIN)
+        *error = 1;
+    return (int)num;
+}
 
 typedef struct s_node
 {
