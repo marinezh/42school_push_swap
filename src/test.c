@@ -6,14 +6,15 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 16:07:04 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/02/11 15:22:59 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/02/11 16:35:31 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <limits.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <ctype.h>
+// #include <limits.h>
+// #include <stdio.h>
+// #include <stdlib.h>
+// #include <ctype.h>
+#include "../includes/push_swap.h"
 
 // Check if a string is a valid integer
 int is_number(const char *str)
@@ -45,11 +46,11 @@ int safe_atoi(const char *str, int *error)
     return (int)num;
 }
 
-typedef struct s_node
-{
-    int value;
-    struct s_node *next;
-} t_node;
+// typedef struct s_node
+// {
+//     int value;
+//     struct s_node *next;
+// } t_node;
 
 // Create a new node
 t_node *new_node(int value)
