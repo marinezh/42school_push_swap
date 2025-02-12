@@ -1,6 +1,6 @@
 # 42school_push_swap
 
-## Swap Operations:
+### Swap Operations:
 
 sa (swap a): Swap the first 2 elements at the top of stack a.
 Do nothing if there is only one or no elements.
@@ -10,7 +10,7 @@ Do nothing if there is only one or no elements.
 
 ss : sa and sb at the same time.
 
-## Push Operations:
+### Push Operations:
 
 pa (push a): Take the first element at the top of b and put it at the top of a.
 Do nothing if b is empty.
@@ -18,7 +18,7 @@ Do nothing if b is empty.
 pb (push b): Take the first element at the top of a and put it at the top of b.
 Do nothing if a is empty.
 
-## Rotate Operations:
+### Rotate Operations:
 
 ra (rotate a): Shift up all elements of stack a by 1.
 The first element becomes the last one.
@@ -28,7 +28,7 @@ The first element becomes the last one.
 
 rr : ra and rb at the same time.
 
-## Reverse Rotate Operations:
+### Reverse Rotate Operations:
 
 rra (reverse rotate a): Shift down all elements of stack a by 1.
 The last element becomes the first one.
