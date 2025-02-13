@@ -6,7 +6,7 @@
 #    By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/10 14:19:08 by mzhivoto          #+#    #+#              #
-#    Updated: 2025/02/12 17:55:55 by mzhivoto         ###   ########.fr        #
+#    Updated: 2025/02/13 13:45:28 by mzhivoto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,8 @@ LIBFT_PATH = ./libft
 # Source files and object files
 SRC = $(SRCS_PATH)/main.c \
 	$(SRCS_PATH)/parse_input.c \
-	$(SRCS_PATH)/helpers_function.c
+	$(SRCS_PATH)/helpers_function.c \
+	$(SRCS_PATH)/sorting2.c
 
 OBJ := $(patsubst $(SRCS_PATH)/%.c, $(OBJS_PATH)/%.o, $(SRC))
 

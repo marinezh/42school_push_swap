@@ -6,7 +6,7 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:20:43 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/02/12 16:33:09 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/02/13 13:46:52 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,12 @@ typedef struct s_node
 
 
 void	putstr(char *str);
-int is_valid_number(char *str);
-int safe_atoi(char *str, int *num);
-int has_duplicates(int *arr, int size);
-int *parse_input(int ac, char **av, int *size);
-
+int	is_valid_number(char *str);
+int	safe_atoi(char *str, int *num);
+int	has_duplicates(int *arr, int size);
+int	*parse_input(int ac, char **av, int *size);
+// void	sort_three(int *numbers);
+// void	sort_five(int *numbers);
+void sort_five(int *a);
 
 #endif

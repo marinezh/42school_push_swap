@@ -6,22 +6,24 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 15:13:37 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/02/12 18:20:06 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/02/13 11:29:57 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int is_valid_number(char *str) 
+int is_valid_number(char *str)
 {
     int i = 0;
     
     // Allow negative numbers
-    if (str[i] == '-' || str[i] == '+') i++;
+    if (str[i] == '-' || str[i] == '+') 
+		i++;
 
     // Ensure the rest are digits
     while (str[i]) {
-        if (!isdigit(str[i])) return 0;
+        if (!isdigit(str[i]))
+			return 0;
         i++;
     }
     
@@ -29,7 +31,7 @@ int is_valid_number(char *str)
 }
 
 // Convert string to int and check for overflow
-int safe_atoi(char *str, int *num) 
+int safe_atoi(char *str, int *num)
 {
     long temp = atol(str); // Convert to long first
 
@@ -41,23 +43,32 @@ int safe_atoi(char *str, int *num)
     return 1;
 }
 
-// Check for duplicates in the array
-int has_duplicates(int *arr, int size) 
+int has_duplicates(int *arr, int size)
 {
-    for (int i = 0; i < size - 1; i++) {
-        for (int j = i + 1; j < size; j++) {
-            if (arr[i] == arr[j]) return 1; // Duplicate found
-        }
-    }
-    return 0;
+	int i;
+	int j;
+
+	i = 0;
+	while (i < size -1)
+	{
+		j = i + 1;
+		while (j < size)
+		{
+			if(arr[i] == arr[j])
+				return (1);
+			j++;
+		}
+		i++;
+	}
+	return (0);
 }
 
-int *parse_input(int ac, char **av, int *size) 
+int *parse_input(int ac, char **av, int *size)
 {
 	if (ac < 2) {
 	    putstr("Error 1\n");
 	    exit(1);
-	}
+	} 
 
 	*size = ac - 1;
 	int *numbers = malloc(sizeof(int) * (*size));

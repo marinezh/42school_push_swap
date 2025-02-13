@@ -6,7 +6,7 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 14:36:35 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/02/12 17:28:47 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/02/13 12:06:14 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,24 @@
 
 
 int main(int argc, char **argv) {
-    int size;
-    int *numbers = parse_input(argc, argv, &size);
+	int i = 0;
+	int size;
+	int *numbers = parse_input(argc, argv, &size);
 
-    if (size == 3) {
-        //sort_three(numbers);
-    } else if (size == 5) {
-        //sort_five(numbers);
-    } else {
-        printf("Error: Only 3 or 5 numbers are supported\n");
-    }
+	if (size == 3) {
+		sort_three(numbers);
+	} else if (size <= 100) {
+		sort_five(numbers);
+	} else {
+		printf("Error: Only 3 or 5 numbers are supported\n");
+	}
+	while(numbers[i])
+	{
+		printf("%d ", numbers[i]);
+		i++;
+	}
+	printf("\n");
 
-    free(numbers);
-    return 0;
+	free(numbers);
+	return 0;
 }
