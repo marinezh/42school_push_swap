@@ -6,7 +6,7 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:20:43 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/02/13 13:46:52 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/02/13 14:43:36 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,14 @@ int	*parse_input(int ac, char **av, int *size);
 // void	sort_three(int *numbers);
 // void	sort_five(int *numbers);
 void sort_five(int *a);
+void sort_three(int *a);
+void sa(int *a);
+void ra(int *a);
+void rra(int *a);
+void sa(int *a);
+void ra(int *a);
+void rra(int *a);
+void pb(int *a, int *b, int *sizeA, int *sizeB);
+void pa(int *a, int *b, int *sizeA, int *sizeB);
 
 #endif
