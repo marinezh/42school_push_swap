@@ -6,7 +6,7 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 13:42:55 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/02/13 14:03:12 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/02/13 14:08:47 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,6 @@ void rra(int *a)
 	a[2] = a[1];
 	a[1] = a[0];
 	a[0] = t;
-
 }
 void pb(int *a, int *b, int *sizeA, int *sizeB)
 { 
@@ -123,8 +122,4 @@ void sort_five(int *a)
 	pa(a, b, &sizeA, &sizeB);
 }
 
-// int main() {
-//     int a[] = {4, 2, 5, 3, 1};
-//     sort_five(a);
-//     return 0;
-// }
+
