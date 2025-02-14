@@ -6,7 +6,7 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 14:36:35 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/02/13 14:58:55 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/02/14 20:10:17 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ int main(int argc, char **argv)
 	int i = 0;
 	int size;
 	int *numbers = parse_input(argc, argv, &size);
-
+	//printf("min_ind :%d\n", find_min_indx(numbers, size));
 	if (size == 3)
 	{
-		sort_three(numbers);
+		sort_three(numbers, size);
 	} else if (size <= 100)
 	{
-		sort_five(numbers);
+		sort_four_five(numbers, size);
 	} 
 	else
 	{
@@ -35,7 +35,9 @@ int main(int argc, char **argv)
 		i++;
 	}
 	printf("\n");
-
+	//printf("max :%d\n", find_max(numbers, size));
+	//printf("min :%d\n", find_min(numbers, size));
+	
 	free(numbers);
 	return 0;
 }
