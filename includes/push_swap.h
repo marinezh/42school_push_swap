@@ -6,7 +6,7 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:20:43 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/02/14 19:27:09 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/02/15 16:38:00 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,9 @@ int	*parse_input(int ac, char **av, int *size);
 //void sort_five(int *a, int size);
 void sort_four_five(int *a, int size);
 void sort_three(int *a, int size);
+void sort_two(int *a, int size);
 void sa(int *a);
+void sb(int *b);
 void ra(int *a, int size);
 void rra(int *a, int size);
 void pb(int *a, int *b, int *sizeA, int *sizeB);
@@ -63,5 +65,7 @@ void pa(int *a, int *b, int *sizeA, int *sizeB);
 int find_max(int *arr, int size);
 int find_min(int *arr, int size);
 int find_min_indx(int *arr, int size);
+int is_sorted(int *arr, int size);
+void move_min_to_top(int *a, int *sizeA);
 
 #endif
