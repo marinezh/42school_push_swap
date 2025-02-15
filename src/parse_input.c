@@ -6,7 +6,7 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 15:13:37 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/02/13 11:29:57 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/02/15 16:57:35 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,33 +14,33 @@
 
 int is_valid_number(char *str)
 {
-    int i = 0;
-    
-    // Allow negative numbers
-    if (str[i] == '-' || str[i] == '+') 
+	int i = 0;
+	
+	// Allow negative numbers
+	if (str[i] == '-' || str[i] == '+') 
 		i++;
 
-    // Ensure the rest are digits
-    while (str[i]) {
-        if (!isdigit(str[i]))
+	// Ensure the rest are digits
+	while (str[i]) {
+		if (!isdigit(str[i]))
 			return 0;
-        i++;
-    }
-    
-    return 1;
+		i++;
+	}
+	
+	return 1;
 }
 
 // Convert string to int and check for overflow
 int safe_atoi(char *str, int *num)
 {
-    long temp = atol(str); // Convert to long first
+	long temp = atol(str); // Convert to long first
 
-    if (temp > INT_MAX || temp < INT_MIN) {
-        return 0; // Overflow detected
-    }
+	if (temp > INT_MAX || temp < INT_MIN) {
+		return 0; // Overflow detected
+	}
 
-    *num = (int)temp;
-    return 1;
+	*num = (int)temp;
+	return 1;
 }
 
 int has_duplicates(int *arr, int size)
@@ -66,8 +66,8 @@ int has_duplicates(int *arr, int size)
 int *parse_input(int ac, char **av, int *size)
 {
 	if (ac < 2) {
-	    putstr("Error 1\n");
-	    exit(1);
+		putstr("Error 1\n");
+		exit(1);
 	} 
 
 	*size = ac - 1;
