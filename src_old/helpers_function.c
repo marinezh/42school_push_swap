@@ -6,7 +6,7 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 17:29:24 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/02/16 19:07:10 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/02/15 17:49:51 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,45 +71,45 @@ int is_sorted(int *arr, int size)
 	}
 	return 1;  // Sorted
 } 
-// void move_min_to_top(int *a, int *sizeA)
-// {
-// 	int min_idx = find_min_indx(a, *sizeA);
+void move_min_to_top(int *a, int *sizeA)
+{
+	int min_idx = find_min_indx(a, *sizeA);
 
-// 	// Decide the shortest way to bring the min to top
-// 	if (min_idx <= *sizeA / 2)
-// 	{
-// 		while (min_idx > 0)
-// 		{
-// 			ra(a, *sizeA);
-// 			min_idx--;
-// 		}
-// 	}
-// 	else
-// 	{
-// 		while (min_idx < *sizeA)
-// 		{
-// 			rra(a, *sizeA);
-// 			min_idx++;
-// 		}
-// 	}
-// }
+	// Decide the shortest way to bring the min to top
+	if (min_idx <= *sizeA / 2)
+	{
+		while (min_idx > 0)
+		{
+			ra(a, *sizeA);
+			min_idx--;
+		}
+	}
+	else
+	{
+		while (min_idx < *sizeA)
+		{
+			rra(a, *sizeA);
+			min_idx++;
+		}
+	}
+}
 
-// int get_median(int *arr, int size)
-// {
-//     int sorted[size];
-//     for (int i = 0; i < size; i++)
-//         sorted[i] = arr[i];
+int get_median(int *arr, int size)
+{
+    int sorted[size];
+    for (int i = 0; i < size; i++)
+        sorted[i] = arr[i];
 
-//     // Simple Bubble Sort to get the middle element
-//     for (int i = 0; i < size - 1; i++)
-//         for (int j = 0; j < size - i - 1; j++)
-//             if (sorted[j] > sorted[j + 1])
-//             {
-//                 int temp = sorted[j];
-//                 sorted[j] = sorted[j + 1];
-//                 sorted[j + 1] = temp;
-//             }
+    // Simple Bubble Sort to get the middle element
+    for (int i = 0; i < size - 1; i++)
+        for (int j = 0; j < size - i - 1; j++)
+            if (sorted[j] > sorted[j + 1])
+            {
+                int temp = sorted[j];
+                sorted[j] = sorted[j + 1];
+                sorted[j + 1] = temp;
+            }
     
-//     return sorted[size / 2];
-// }
+    return sorted[size / 2];
+}
 

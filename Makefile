@@ -6,7 +6,7 @@
 #    By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/10 14:19:08 by mzhivoto          #+#    #+#              #
-#    Updated: 2025/02/15 19:36:56 by mzhivoto         ###   ########.fr        #
+#    Updated: 2025/02/16 19:39:48 by mzhivoto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,11 +24,8 @@ LIBFT_PATH = ./libft
 SRC = $(SRCS_PATH)/main.c \
 	$(SRCS_PATH)/parse_input.c \
 	$(SRCS_PATH)/helpers_function.c \
-	$(SRCS_PATH)/moves_ps.c \
-	$(SRCS_PATH)/moves_reverse.c \
-	$(SRCS_PATH)/moves_rotate.c \
-	$(SRCS_PATH)/sorting_big.c \
 	$(SRCS_PATH)/sorting_small.c \
+	
 
 OBJ := $(patsubst $(SRCS_PATH)/%.c, $(OBJS_PATH)/%.o, $(SRC))
 

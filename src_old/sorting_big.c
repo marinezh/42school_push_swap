@@ -6,7 +6,7 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 16:46:48 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/02/15 19:38:51 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/02/16 16:32:14 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,12 @@ void push_chunks(t_stack *a, t_stack *b, int chunk_size)
     while (i < chunk_size && a->size > 3)
     {
         if (a->arr[0] <= median) // Push smaller elements to B
-            pb(a, b);
+        {
+            pb_big(a, b);
+            i++;
+        }
         else
             ra(a->arr, a->size); // Rotate to find next chunk element
-        i++;
     }
 }
 
@@ -44,14 +46,20 @@ void push_back_to_a(t_stack *a, t_stack *b)
         if (max_idx > b->size / 2)
         {
             while (max_idx++ < b->size)
+            {
                 rrb(b->arr, b->size);
+                max_idx++;
+            }
         }
         else
         {
             while (max_idx-- > 0)
-                rb(b->arr, b->size);
+            {
+                 rb(b->arr, b->size);
+                 max_idx--;
+            }
         }
-        pa(a, b);
+        pa_big(a, b);
     }
 }
 
@@ -59,8 +67,14 @@ void push_back_to_a(t_stack *a, t_stack *b)
 void chunk_sort(t_stack *a)
 {
     t_stack b;
-    b.arr = malloc(a->size * sizeof(int));
     b.size = 0;
+    b.arr = malloc(a->size * sizeof(int));
+    if(!b.arr)
+    {
+        printf("Memory allocation failed!\n");
+        exit(EXIT_FAILURE);
+    }
+        
 
     int chunk_size = a->size / 5 + 3; // Dynamically adjust chunk size
 
@@ -71,7 +85,7 @@ void chunk_sort(t_stack *a)
     }
 
     // Sort remaining 3 numbers in Stack A
-    sort_three(a->arr, a->size);
+    sort_three(a->arr, 3);
 
     // Push elements back from B to A in correct order
     push_back_to_a(a, &b);

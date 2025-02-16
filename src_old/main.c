@@ -6,52 +6,45 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 14:36:35 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/02/16 19:41:05 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/02/16 17:04:04 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-// typedef struct s_stack {
-// 	int *arr;
-// 	int size;
-// } t_stack;
-void sa(t_stack *stack_a)
+int main(int argc, char **argv)
 {
-	int temp;
-
-	if (stack_a->size < 2)
-		return;
-	temp = stack_a->arr[0];
-	stack_a->arr[0] = stack_a->arr[1];
-	stack_a->arr[1] = temp;
-	printf("sa\n");
-}
-
-
-int main(int ac, char **av)
-{
-	t_stack *stack_a;
-	t_stack *stack_b;
-
-	stack_a = (t_stack *)calloc(1, sizeof(t_stack));
-	stack_b = (t_stack *)calloc(1, sizeof(t_stack));
-
-	stack_a->arr = parse_input(ac, av, &stack_a->size);
-
-	int i = 0;
-	printf("size of stack a %d\n", stack_a->size);
-	if (stack_a->size == 3)
+	//int i = 0;
+	int size;
+	int *numbers = parse_input(argc, argv, &size);
+	//printf("min_ind :%d\n", find_min_indx(numbers, size));
+	t_stack a;
+    a.arr = numbers;
+    a.size = size;
+    a.capacity = size;
+	
+	if(size == 2)
+		sort_two(a.arr, size);
+	else if (size == 3)
 	{
-		sort_three(stack_a->arr, stack_a->size);
-	}
-	while(i < stack_a->size)
+		sort_three(a.arr, size);
+	} else if (size == 4 || size == 5)
 	{
-		printf("%d\n", stack_a->arr[i]);
-		
-		i++;
+		sort_four_five(a.arr, size);
+	} 
+	else
+	{
+		chunk_sort(&a);
 	}
-	free(stack_a);
-	free(stack_b);
+	// while(i < size)
+	// {
+	// 	printf("%d ", a.arr[i]);
+	// 	i++;
+	// }
+	//printf("\n");
+	//printf("max :%d\n", find_max(numbers, size));
+	//printf("min :%d\n", find_min(numbers, size));
+	
+	free(numbers);
 	return 0;
 }

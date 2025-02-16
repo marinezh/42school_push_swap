@@ -6,43 +6,39 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 15:12:47 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/02/16 19:45:47 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/02/16 16:10:24 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-// void sa(int *a)
-// {
-// 	int temp;
-
-// 	// if (sizeA < 2)
-// 	// 	return;
-// 	temp = a[0];
-// 	a[0] = a[1];
-// 	a[1] = temp;
-// 	printf("sa\n");
-// }
-void sa(t_stack *stack_a)
+void sa(int *a)
 {
 	int temp;
 
-	if (stack_a->size < 2)
-		return;
-	temp = stack_a->arr[0];
-	stack_a->arr[0] = stack_a->arr[1];
-	stack_a->arr[1] = temp;
+	// if (sizeA < 2)
+	// 	return;
+	temp = a[0];
+	a[0] = a[1];
+	a[1] = temp;
 	printf("sa\n");
 }
-void sb(t_stack *stack_b)
+
+void sb(int *b)
 {
-	sa(stack_b);
+	int temp;
+
+	// if (sizeB < 2)
+	// 	return;
+	temp = b[0];
+	b[0] = b[1];
+	b[1] = temp;
 	printf("sb\n");
 }
-void ss(t_stack *stack_a, t_stack *stack_b)
+void ss(int *a, int *b)
 {
-	sa(stack_a);
-	sb(stack_b);
+	sa(a);
+	sb(b);
 	printf("ss\n");
 }
 

@@ -6,7 +6,7 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 16:07:04 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/02/12 14:22:29 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/02/16 19:05:18 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,3 +148,9 @@ int main(int argc, char **argv)
 
 	return 0;
 }
+$(SRCS_PATH)/helpers_function.c \
+	$(SRCS_PATH)/moves_ps.c \
+	$(SRCS_PATH)/moves_reverse.c \
+	$(SRCS_PATH)/moves_rotate.c \
+	$(SRCS_PATH)/sorting_big.c \
+	$(SRCS_PATH)/sorting_small.c \
