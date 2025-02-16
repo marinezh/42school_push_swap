@@ -6,7 +6,7 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 17:29:24 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/02/16 19:07:10 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/02/17 01:45:26 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,10 @@ int find_min_indx(int *arr, int size)
 	}
 	return min_indx;
 }
-int is_sorted(int *arr, int size)
+int is_sorted(t_stack *stack_a)
 {
+	int *arr = stack_a->arr;
+	int size = stack_a->size;
 	int i = 0;
 	while (i < size - 1) {
 		if (arr[i] > arr[i + 1]) {

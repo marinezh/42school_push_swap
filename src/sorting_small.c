@@ -6,17 +6,20 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 13:42:55 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/02/17 01:28:59 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/02/17 01:48:25 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-// void sort_two(int *a, int size)
-// {
-// 	if(!is_sorted(a, size))
-// 		sa(a);
-// }
+void sort_two(t_stack *stack_a)
+{
+	// int size;
+
+	// size = stack_a->size;
+	if(!is_sorted(stack_a))
+		sa(stack_a);
+}
 
 void sort_three(t_stack *stack_a)
 {

@@ -6,7 +6,7 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 14:36:35 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/02/17 01:39:43 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/02/17 01:50:09 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,11 @@ int main(int ac, char **av)
 
 	int i = 0;
 	printf("size of stack a %d\n", stack_a->size);
-	if (stack_a->size == 3)
+	if (stack_a->size == 2)
+	{
+		sort_two(stack_a);
+	}
+	else if (stack_a->size == 3)
 	{
 		sort_three(stack_a);
 	}
