@@ -6,7 +6,7 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 15:12:47 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/02/17 15:18:21 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/02/17 15:57:24 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ void ss(t_stack *stack_a, t_stack *stack_b)
 void pa(t_stack *stack_a, t_stack *stack_b)
 { 
 	int i;
-
+	if (stack_b->size == 0)
+		return;  // No element to push
 	i = stack_a->size;
 	while (i > 0)
 	{
@@ -53,6 +54,9 @@ void pa(t_stack *stack_a, t_stack *stack_b)
 void pb(t_stack *stack_a, t_stack *stack_b)
 { 
 	int i;
+
+	if (stack_a->size == 0)
+		return; 
 	
 	stack_b->arr[stack_b->size] = stack_a->arr[0];
 	(stack_b->size)++;

@@ -6,7 +6,7 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 13:42:55 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/02/17 15:21:20 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/02/17 17:38:57 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,15 +44,12 @@ void sort_three(t_stack *stack_a)
 
 void sort_four_five(t_stack *stack_a, t_stack *stack_b)
 {
-	//int b[2];
-	int sizeA = stack_a->size;
-	int sizeB = 0;
-	int num_to_push = sizeA - 3; // Push 1 element if size=4, Push 2 if size=5
-
+	int num_to_push = stack_a->size - 3; // Push 1 element if size=4, Push 2 if size=5
+	//int i = 0;
 	// Find and push the smallest elements to stack B
 	if (is_sorted(stack_a)) 
 		return;  // Skip sorting since it's already sorted
-	while (sizeB < num_to_push)
+	while (stack_b->size < num_to_push)
 	{
 		move_min_to_top(stack_a);
 		pb(stack_a, stack_b);
@@ -60,9 +57,9 @@ void sort_four_five(t_stack *stack_a, t_stack *stack_b)
 	// Sort the remaining three numbers
 	sort_three(stack_a);
 	// Ensure `b` is sorted before pushing back
-	if (sizeB == 2 && stack_b->arr[0] > stack_b->arr[1])
-		sa(stack_b);
+	if (stack_b->size == 2 && stack_b->arr[0] > stack_b->arr[1])
+		sb(stack_b);
 	// Push elements back from B to A
-	while (sizeB > 0)
+	while (stack_b->size > 0)
 		pa(stack_a, stack_b);
 }

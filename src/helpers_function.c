@@ -6,7 +6,7 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 17:29:24 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/02/17 15:07:26 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/02/17 17:40:55 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,12 +62,18 @@ int find_min_indx(t_stack *stack_a)
 }
 int is_sorted(t_stack *stack_a)
 {
-	int *arr = stack_a->arr;
-	int size = stack_a->size;
-	int i = 0;
-	while (i < size - 1) {
-		if (arr[i] > arr[i + 1]) {
-			return 0;  // Not sorted
+	int i;
+	int *arr;
+	int size;
+
+	arr = stack_a->arr;
+	size = stack_a->size;
+	i = 0;
+	while (i < size - 1)
+	{
+		if (arr[i] > arr[i + 1])
+		{
+			return 0;// Not sorted
 		}
 		i++;
 	}
@@ -75,24 +81,27 @@ int is_sorted(t_stack *stack_a)
 } 
 void move_min_to_top(t_stack *stack_a)
 {
-	int *sizeA = stack_a->size; 
-	int min_idx = find_min_indx(stack_a);
-
+	int	sizeA; 
+	int	min_index; 
+	
+	sizeA = stack_a->size; 
+	min_index = find_min_indx(stack_a);
+	//printf("min_index %d is %d\n ", min_index, stack_a->arr[min_index]);
 	// Decide the shortest way to bring the min to top
-	if (min_idx <= *sizeA / 2)
+	if (min_index <= sizeA / 2)
 	{
-		while (min_idx > 0)
+		while (min_index > 0)
 		{
 			ra(stack_a);
-			min_idx--;
+			min_index--;
 		}
 	}
 	else
 	{
-		while (min_idx < *sizeA)
+		while (min_index < sizeA)
 		{
 			rra(stack_a);
-			min_idx++;
+			min_index++;
 		}
 	}
 }
