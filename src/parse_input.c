@@ -6,7 +6,7 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 15:13:37 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/02/16 19:00:34 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/02/17 19:03:40 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,46 +62,46 @@ int has_duplicates(int *arr, int size)
 	}
 	return (0);
 }
-
-int *parse_input(int ac, char **av, int *size)
+void validate_input(char **av, int *arr, int *size)
 {
-	if (ac < 2) {
-		putstr("Error 1\n");
-		exit(1);
-	} 
+	int i;
 
-	*size = ac - 1;
-	int *arr = malloc(sizeof(int) * (*size));
-
-	if (!arr) {
-		putstr("Error 2\n");
-		exit(1);
-	}
-
-	for (int i = 0; i < *size; i++)
+	i = 0;
+	while(i < *size)
 	{
-		if (!is_valid_number(av[i + 1])) {
-			printf("Error 4: Invalid number '%s'\n", av[i + 1]);
+		if (!is_valid_number(av[i])) {
+			printf("Error 4: Invalid number '%s'\n", av[i]);
 			free(arr);
 			exit(1);
 		}
-
-		if (!safe_atoi(av[i + 1], &arr[i]))
+		if (!safe_atoi(av[i], &arr[i]))
 		{
-			printf("Error 5: Number '%s' is out of range\n", av[i + 1]);
+			printf("Error 5: Number '%s' is out of range\n", av[i]);
 			free(arr);
 			exit(1);
 		}
+		i++;
 	}
-
 	if (has_duplicates(arr, *size))
 	{
 		putstr("Error 3\n");
 		free(arr);
 		exit(1);
 	}
-
-
+}
+int *parse_input(int ac, char **av, int *size)
+{
+	if (ac < 2) {
+		putstr("Error 1\n");
+		exit(1);
+	} 
+	*size = ac - 1;
+	int *arr = malloc(sizeof(int) * (*size));
+	if (!arr) {
+		putstr("Error 2\n");
+		exit(1);
+	}
+	validate_input(av + 1, arr, size);
 	return arr;
 }
 
