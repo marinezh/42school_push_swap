@@ -6,7 +6,7 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 15:22:58 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/02/17 01:36:01 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/02/17 17:55:51 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,9 @@ void ra(t_stack *stack_a)
 {
 	int i;
 	int temp;
-	int sizeA = stack_a->size;
-
+	int sizeA;
+	
+	sizeA = stack_a->size;
 	if (sizeA < 2)
 		return; 
 	i = 0;
@@ -42,30 +43,33 @@ void ra(t_stack *stack_a)
 	stack_a->arr[sizeA - 1] = temp;
 	printf("ra\n");
 }
-void rb(int *b, int sizeB)
+void rb(t_stack *stack_b)
 {
 	int i;
 	int temp;
+	int sizeB;
+	
+	sizeB = stack_b->size;
 
 	if (sizeB < 2)
 		return;
 	i = 0;
-	temp = b[0];
+	temp = stack_b->arr[0];
 	while(i < sizeB - 1)
 	{
-		b[i] = b[i + 1];
+		stack_b->arr[i] = stack_b->arr[i + 1];
 		i++;
 	}
-	b[sizeB - 1] = temp;
+	stack_b->arr[sizeB - 1] = temp;
 	printf("rb\n");
 }
 
-// void rr(int *a, int *b, int sizeA, int sizeB)
-// {
-// 	ra(a);
-// 	rb(b, sizeB);
-// 	printf("rr\n");
-// }
+void rr(t_stack *stack_a, t_stack *stack_b)
+{
+	ra(stack_a);
+	rb(stack_b);
+	printf("rr\n");
+}
 
 
 

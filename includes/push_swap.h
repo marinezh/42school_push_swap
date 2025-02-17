@@ -6,7 +6,7 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:20:43 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/02/17 17:24:14 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/02/17 18:13:44 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,39 +54,22 @@ int	is_valid_number(char *str);
 int	safe_atoi(char *str, int *num);
 int	has_duplicates(int *arr, int size);
 int	*parse_input(int ac, char **av, int *size);
-// void	sort_three(int *numbers);
-// void	sort_five(int *numbers);
-//void sort_five(int *a, int size);
-//void sort_four_five(int *a, int size);
-void sort_four_five(t_stack *stack_a, t_stack *stack_b);
-// void sort_three(int *a, int size);
-void sort_three(t_stack *stack_a);
 void sort_two(t_stack *stack_a);
-//void sort_two(int *a, int size);
-//void sa(int *a);
+void sort_three(t_stack *stack_a);
+void sort_four_five(t_stack *stack_a, t_stack *stack_b);
 void sa(t_stack *stack_a);
 void sb(t_stack *stack_b);
-// void sb(int *b);
-// void ra(int *a, int sizeA);
-void ra(t_stack *stack_a);
-void rb(int *b, int sizeB);
-void rr(int *a, int *b, int sizeA, int sizeB);
-void rra(t_stack *stack_a);
-// void rra(int *a, int sizeA);
-void rrb(int *b, int sizeB);
-void rrr(int *a, int *b,int sizeA, int sizeB);
-//void pb(int *a, int *b, int *sizeA, int *sizeB);
-// void pa(int *a, int *b, int *sizeA, int *sizeB);
+void ss(t_stack *stack_a, t_stack *stack_b);
 void pa(t_stack *stack_a, t_stack *stack_b);
 void pb(t_stack *stack_a, t_stack *stack_b);
-// void pa_big(t_stack *a, t_stack *b);
-// void pb_big(t_stack *a, t_stack *b);
-// int find_max(int *arr, int size);
-// int find_min(int *arr, int size);
-//int find_min_indx(int *arr, int size);
+void ra(t_stack *stack_a);
+void rb(t_stack *stack_b);
+void rr(t_stack *stack_a, t_stack *stack_b);
+void rra(t_stack *stack_a);
+void rrb(t_stack *stack_b);
+void rrr(t_stack *stack_a, t_stack *stack_b);
 int find_min_indx(t_stack *stack_a);
-int find_max_indx(int *arr, int size);
-//int is_sorted(int *arr, int size);
+int find_max_indx(t_stack *stack_a);
 int is_sorted(t_stack *stack_a);
 void move_min_to_top(t_stack *stack_a);
 int get_median(int *arr, int size);

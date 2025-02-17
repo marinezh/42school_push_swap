@@ -6,7 +6,7 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 17:29:24 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/02/17 17:40:55 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/02/17 18:20:52 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,18 @@ void putstr(char *str)
 		len++;
 	write(1, str, len);
 }
-int find_max_indx(int *arr, int size)
+int find_max_indx(t_stack *stack_a)
 {
 	int i;
 	int max_indx;
 	
 	max_indx = 0;
 	i = 1;
-	if (size == 0)
+	if (stack_a->size == 0)
 		return 0;
-	while(i < size)
+	while(i < stack_a->size)
 	{
-		if(arr[i] > arr[max_indx])
+		if(stack_a->arr[i] > stack_a->arr[max_indx])
 		{
 			max_indx = i;
 		}
@@ -106,22 +106,22 @@ void move_min_to_top(t_stack *stack_a)
 	}
 }
 
-// int get_median(int *arr, int size)
-// {
-//     int sorted[size];
-//     for (int i = 0; i < size; i++)
-//         sorted[i] = arr[i];
+int get_median(int *arr, int size)
+{
+    int sorted[size];
+    for (int i = 0; i < size; i++)
+        sorted[i] = arr[i];
 
-//     // Simple Bubble Sort to get the middle element
-//     for (int i = 0; i < size - 1; i++)
-//         for (int j = 0; j < size - i - 1; j++)
-//             if (sorted[j] > sorted[j + 1])
-//             {
-//                 int temp = sorted[j];
-//                 sorted[j] = sorted[j + 1];
-//                 sorted[j + 1] = temp;
-//             }
+    // Simple Bubble Sort to get the middle element
+    for (int i = 0; i < size - 1; i++)
+        for (int j = 0; j < size - i - 1; j++)
+            if (sorted[j] > sorted[j + 1])
+            {
+                int temp = sorted[j];
+                sorted[j] = sorted[j + 1];
+                sorted[j + 1] = temp;
+            }
     
-//     return sorted[size / 2];
-// }
+    return sorted[size / 2];
+}
 
