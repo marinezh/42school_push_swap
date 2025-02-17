@@ -6,23 +6,12 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 15:12:47 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/02/17 00:55:17 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/02/17 15:18:21 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-// void sa(int *a)
-// {
-// 	int temp;
-
-// 	// if (sizeA < 2)
-// 	// 	return;
-// 	temp = a[0];
-// 	a[0] = a[1];
-// 	a[1] = temp;
-// 	printf("sa\n");
-// }
 void sa(t_stack *stack_a)
 {
 	int temp;
@@ -61,17 +50,17 @@ void pa(t_stack *stack_a, t_stack *stack_b)
 	(stack_b->size)--;
 	printf("pa\n");
 }
-void pb(int *a, int *b, int *sizeA, int *sizeB)
+void pb(t_stack *stack_a, t_stack *stack_b)
 { 
 	int i;
-
-	b[*sizeB] = a[0];
-	(*sizeB)++;
-	(*sizeA)--;
+	
+	stack_b->arr[stack_b->size] = stack_a->arr[0];
+	(stack_b->size)++;
+	(stack_a->size)--;
 	i = 0;
-	while (i < *sizeA)
+	while (i < stack_a->size)
 	{
-		a[i] = a[i+1];
+		stack_a->arr[i] = stack_a->arr[i+1];
 		i++;
 	}
 	printf("pb\n");

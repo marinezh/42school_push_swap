@@ -6,7 +6,7 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 13:42:55 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/02/17 01:48:25 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/02/17 15:21:20 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void sort_two(t_stack *stack_a)
 {
 	// int size;
-
 	// size = stack_a->size;
 	if(!is_sorted(stack_a))
 		sa(stack_a);
@@ -43,26 +42,27 @@ void sort_three(t_stack *stack_a)
 	}
 }
 
-// void sort_four_five(int *a, int size)
-// {
-// 	int b[2], sizeA = size, sizeB = 0;
-// 	int num_to_push = size - 3; // Push 1 element if size=4, Push 2 if size=5
+void sort_four_five(t_stack *stack_a, t_stack *stack_b)
+{
+	//int b[2];
+	int sizeA = stack_a->size;
+	int sizeB = 0;
+	int num_to_push = sizeA - 3; // Push 1 element if size=4, Push 2 if size=5
 
-// 	// Find and push the smallest elements to stack B
-// 	if (is_sorted(a, size)) 
-// 		return;  // Skip sorting since it's already sorted
-// 	while (sizeB < num_to_push)
-// 	{
-// 		move_min_to_top(a, &sizeA);
-// 		pb(a, b, &sizeA, &sizeB);
-// 	}
-// 	// Sort the remaining three numbers
-// 	sort_three(a, 3);
-// 	// Ensure `b` is sorted before pushing back
-// 	if (sizeB == 2 && b[0] > b[1])
-// 		sa(b);
-// 	// Push elements back from B to A
-// 	while (sizeB > 0)
-// 		pa(a, b, &sizeA, &sizeB);
-	
-// }
+	// Find and push the smallest elements to stack B
+	if (is_sorted(stack_a)) 
+		return;  // Skip sorting since it's already sorted
+	while (sizeB < num_to_push)
+	{
+		move_min_to_top(stack_a);
+		pb(stack_a, stack_b);
+	}
+	// Sort the remaining three numbers
+	sort_three(stack_a);
+	// Ensure `b` is sorted before pushing back
+	if (sizeB == 2 && stack_b->arr[0] > stack_b->arr[1])
+		sa(stack_b);
+	// Push elements back from B to A
+	while (sizeB > 0)
+		pa(stack_a, stack_b);
+}

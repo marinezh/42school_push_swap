@@ -6,7 +6,7 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 17:29:24 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/02/17 01:45:26 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/02/17 15:07:26 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,18 +41,18 @@ int find_max_indx(int *arr, int size)
 	return max_indx;
 }
 
-int find_min_indx(int *arr, int size)
+int find_min_indx(t_stack *stack_a)
 {
 	int i;
 	int min_indx;
 	
 	min_indx = 0;
 	i = 1;
-	if (size == 0)
+	if (stack_a->size == 0)
 		return 0;
-	while(i < size)
+	while(i < stack_a->size)
 	{
-		if(arr[i] < arr[min_indx])
+		if(stack_a->arr[i] < stack_a->arr[min_indx])
 		{
 			min_indx = i;
 		}
@@ -73,28 +73,29 @@ int is_sorted(t_stack *stack_a)
 	}
 	return 1;  // Sorted
 } 
-// void move_min_to_top(int *a, int *sizeA)
-// {
-// 	int min_idx = find_min_indx(a, *sizeA);
+void move_min_to_top(t_stack *stack_a)
+{
+	int *sizeA = stack_a->size; 
+	int min_idx = find_min_indx(stack_a);
 
-// 	// Decide the shortest way to bring the min to top
-// 	if (min_idx <= *sizeA / 2)
-// 	{
-// 		while (min_idx > 0)
-// 		{
-// 			ra(a, *sizeA);
-// 			min_idx--;
-// 		}
-// 	}
-// 	else
-// 	{
-// 		while (min_idx < *sizeA)
-// 		{
-// 			rra(a, *sizeA);
-// 			min_idx++;
-// 		}
-// 	}
-// }
+	// Decide the shortest way to bring the min to top
+	if (min_idx <= *sizeA / 2)
+	{
+		while (min_idx > 0)
+		{
+			ra(stack_a);
+			min_idx--;
+		}
+	}
+	else
+	{
+		while (min_idx < *sizeA)
+		{
+			rra(stack_a);
+			min_idx++;
+		}
+	}
+}
 
 // int get_median(int *arr, int size)
 // {
