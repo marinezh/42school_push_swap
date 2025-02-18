@@ -6,7 +6,7 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 17:29:24 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/02/17 18:20:52 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/02/18 17:51:09 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,22 +106,61 @@ void move_min_to_top(t_stack *stack_a)
 	}
 }
 
-int get_median(int *arr, int size)
+int get_median(t_stack *stack_a)
 {
-    int sorted[size];
-    for (int i = 0; i < size; i++)
-        sorted[i] = arr[i];
+	int i = 0;
+	int sorted[stack_a->size];
+	while (i < stack_a->size)
+	{
+		sorted[i] = stack_a->arr[i];
+		i++;
+	}
 
-    // Simple Bubble Sort to get the middle element
-    for (int i = 0; i < size - 1; i++)
-        for (int j = 0; j < size - i - 1; j++)
-            if (sorted[j] > sorted[j + 1])
-            {
-                int temp = sorted[j];
+	i = 0;
+	while(i < stack_a->size - 1)
+	{
+		int j = 0;
+		while(j < stack_a->size - i -1)
+		{
+			if(sorted[j] > sorted[j + 1])
+			{
+				int temp = sorted[j];    // change to ft_swap after switching libft lib
                 sorted[j] = sorted[j + 1];
                 sorted[j + 1] = temp;
-            }
-    
-    return sorted[size / 2];
+			}
+			j++;
+		}
+		i++;
+	}
+	if (stack_a->size % 2 != 0)
+        return sorted[stack_a->size / 2];  // Odd size -> middle element
+    else
+        return (sorted[(stack_a->size / 2) - 1] + sorted[stack_a->size / 2]) / 2.0;	
 }
-
+// int get_median(t_stack *stack_a)
+// {
+// 	int i = 0;
+// 	int sorted[stack_a->size];
+// 	while (i < stack_a->size)
+// 	{
+// 		sorted[i] = stack_a->arr[i];
+// 		i++;
+// 	}
+// 	i = 0;
+// 	while(i < stack_a->size - 1)
+// 	{
+// 		if(sorted[i] > sorted[i + 1])
+// 		{
+// 			int temp = sorted[i];    // change to ft_swap after switching libft lib
+// 			sorted[i] = sorted[i + 1];
+// 			sorted[i + 1] = temp;
+// 			i = 0;
+// 		}
+// 		else
+// 			i++;
+// 	}
+// 	if (stack_a->size % 2 != 0)
+// 		return sorted[stack_a->size / 2];  // Odd size -> middle element
+// 	else
+// 		return (sorted[(stack_a->size / 2) - 1] + sorted[stack_a->size / 2]) / 2.0;
+// }

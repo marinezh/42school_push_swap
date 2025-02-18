@@ -6,7 +6,7 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 17:29:24 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/02/15 17:49:51 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/02/18 16:56:38 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,5 +111,37 @@ int get_median(int *arr, int size)
             }
     
     return sorted[size / 2];
+}
+
+int get_median(t_stack *stack_a)
+{
+	int i = 0;
+	int sorted[stack_a->size];
+	while (i < stack_a->size)
+	{
+		sorted[i] = stack_a->arr[i];
+		i++;
+	}
+
+	i = 0;
+	while(i < stack_a->size - 1)
+	{
+		int j = 0;
+		while(j < stack_a->size - i -1)
+		{
+			if(sorted[j] > sorted[j + 1])
+			{
+				int temp = sorted[j];    // change to ft_swap after switching libft lib
+                sorted[j] = sorted[j + 1];
+                sorted[j + 1] = temp;
+			}
+			j++;
+		}
+		i++;
+	}
+	if (stack_a->size % 2 != 0)
+        return sorted[stack_a->size / 2];  // Odd size -> middle element
+    else
+        return (sorted[(stack_a->size / 2) - 1] + sorted[stack_a->size / 2]) / 2.0;	
 }
 
