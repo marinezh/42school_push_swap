@@ -6,7 +6,7 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 14:36:35 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/02/18 17:46:00 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/02/18 23:33:18 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,23 +45,18 @@ int main(int ac, char **av)
 	{
 		sort_four_five(stack_a, stack_b);
 	}
+	else if (stack_a->size > 5)
+	{
+		sort_large(stack_a, stack_b);
+	}
 	// while(i < stack_a->size)
 	// {
 	// 	printf("%d\n", stack_a->arr[i]);
 	// 	i++;
 	// }
-	int median = get_median(stack_a);
-    printf("Median of the array is: %d\n", median);
-	first_move(stack_a, stack_b);
-	 printf("stack_a: ");
-    for (int i = 0; i < stack_a->size; i++)
-        printf("%d ", stack_a->arr[i]);
-    printf("\n");
-
-    printf("stack_b: ");
-    for (int i = 0; i < stack_b->size; i++)
-        printf("%d ", stack_b->arr[i]);
-    printf("\n");
+	//int median = get_median(stack_a);
+    
+    
 	free(stack_a->arr);
 	free(stack_b->arr);
 	free(stack_a);

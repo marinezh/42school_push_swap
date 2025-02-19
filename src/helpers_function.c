@@ -6,7 +6,7 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 17:29:24 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/02/18 17:51:09 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/02/18 23:39:39 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void putstr(char *str)
 		len++;
 	write(1, str, len);
 }
-int find_max_indx(t_stack *stack_a)
+int find_max_index(t_stack *stack_a)
 {
 	int i;
 	int max_indx;
@@ -41,7 +41,7 @@ int find_max_indx(t_stack *stack_a)
 	return max_indx;
 }
 
-int find_min_indx(t_stack *stack_a)
+int find_min_index(t_stack *stack_a)
 {
 	int i;
 	int min_indx;
@@ -85,7 +85,7 @@ void move_min_to_top(t_stack *stack_a)
 	int	min_index; 
 	
 	sizeA = stack_a->size; 
-	min_index = find_min_indx(stack_a);
+	min_index = find_min_index(stack_a);
 	//printf("min_index %d is %d\n ", min_index, stack_a->arr[min_index]);
 	// Decide the shortest way to bring the min to top
 	if (min_index <= sizeA / 2)

@@ -6,7 +6,7 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 16:46:48 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/02/18 19:22:43 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/02/18 23:40:14 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,65 +92,147 @@
 
 //     free(b.arr);
 // }
-void first_move(t_stack *stack_a, t_stack *stack_b)
-{
-    int median;
-    int i = 0;
-    int count = stack_a->size;
+// void first_move(t_stack *stack_a, t_stack *stack_b)
+// {
+//     int median;
+//     int i = 0;
+//     int count = stack_a->size;
 
-    median = get_median(stack_a);
+//     median = get_median(stack_a);
     
-    while( count > 0)
-    {
-         printf("element we are checking %d\n", stack_a->arr[i]);
-        if(stack_a->arr[i] < median)
-        {
-            printf("Pushing %d to stack_b\n", stack_a->arr[i]);
-            pb(stack_a, stack_b);
+//     while( count > 0)
+//     {
+//          printf("element we are checking %d\n", stack_a->arr[i]);
+//         if(stack_a->arr[i] < median)
+//         {
+//             printf("Pushing %d to stack_b\n", stack_a->arr[i]);
+//             pb(stack_a, stack_b);
            
             
-            printf("stack_a: ");
-            for (int k = 0; k < stack_a->size; k++)
-            printf("%d ", stack_a->arr[k]);
-            printf("\n");
+//             printf("stack_a: ");
+//             for (int k = 0; k < stack_a->size; k++)
+//             printf("%d ", stack_a->arr[k]);
+//             printf("\n");
 
-            printf("stack_b: ");
-            for (int j = 0; j < stack_b->size; j++)
-            printf("%d ", stack_b->arr[j]);
-            printf("\n");
-        }
-        else 
-        {
-            printf("Rotating %d to the bottom of stack_a\n", stack_a->arr[i]);
-            ra(stack_a);
+//             printf("stack_b: ");
+//             for (int j = 0; j < stack_b->size; j++)
+//             printf("%d ", stack_b->arr[j]);
+//             printf("\n");
+//         }
+//         else 
+//         {
+//             printf("Rotating %d to the bottom of stack_a\n", stack_a->arr[i]);
+//             ra(stack_a);
            
 
-            printf("stack_a: ");
-            for (int k = 0; k < stack_a->size; k++)
-            printf("%d ", stack_a->arr[k]);
-            printf("\n");
+//             printf("stack_a: ");
+//             for (int k = 0; k < stack_a->size; k++)
+//             printf("%d ", stack_a->arr[k]);
+//             printf("\n");
 
-            printf("stack_b: ");
-            for (int j = 0; j < stack_b->size; j++)
-            printf("%d ", stack_b->arr[j]);
-            printf("\n");
-        } 
-        count--;
+//             printf("stack_b: ");
+//             for (int j = 0; j < stack_b->size; j++)
+//             printf("%d ", stack_b->arr[j]);
+//             printf("\n");
+//         } 
+//         count--;
+//     }
+// }
+// void first_move(t_stack *stack_a, t_stack *stack_b) 
+// {
+//     int median = get_median(stack_a);
+//     int count = stack_a->size; 
+
+//     while (count > 0) {
+//         if (stack_a->arr[0] < median)
+//         {
+//             pb(stack_a, stack_b); // Push to stack_b if less than median
+//         } else 
+//         {
+//             ra(stack_a); // Rotate stack_a if greater or equal
+//         }
+//         count--;
+//     }
+// }
+int *copy_and_sort(t_stack *stack)
+{
+    int *sorted = malloc(stack->size * sizeof(int));
+    if (!sorted)
+        return NULL;
+    
+    for (int i = 0; i < stack->size; i++)
+        sorted[i] = stack->arr[i];
+    
+    for (int i = 0; i < stack->size - 1; i++)
+    {
+        for (int j = 0; j < stack->size - i - 1; j++)
+        {
+            if (sorted[j] > sorted[j + 1])
+            {
+                int temp = sorted[j];
+                sorted[j] = sorted[j + 1];
+                sorted[j + 1] = temp;
+            }
+        }
+    }
+    
+    return sorted;
+}
+
+void push_chunks_to_b(t_stack *stack_a, t_stack *stack_b, int chunk_size)
+{
+    int chunk_start = 0;
+    int chunk_end;
+    int *sorted = copy_and_sort(stack_a);
+    
+    while (chunk_start < stack_a->size)
+    {
+        chunk_end = chunk_start + chunk_size;
+        if (chunk_end > stack_a->size)
+            chunk_end = stack_a->size;
+        
+        int pushed = 0;
+        int count = stack_a->size;
+        while (count--)
+        {
+            if (stack_a->arr[0] >= sorted[chunk_start] && stack_a->arr[0] < sorted[chunk_end])
+            {
+                pb(stack_a, stack_b);
+                pushed = 1;
+            }
+            else
+            {
+                ra(stack_a);
+            }
+        }
+        if (!pushed)
+            break;
+        chunk_start = chunk_end;
+    }
+    free(sorted);
+}
+
+
+void push_back_to_a(t_stack *stack_a, t_stack *stack_b)
+{
+    while (stack_b->size > 0)
+    {
+        int max_index = find_max_index(stack_b);
+        
+        while (stack_b->arr[0] != stack_b->arr[max_index])
+        {
+            if (max_index <= stack_b->size / 2)
+                rb(stack_b);
+            else
+                rrb(stack_b);
+        }
+        pa(stack_a, stack_b);
     }
 }
-void first_move(t_stack *stack_a, t_stack *stack_b) 
-{
-    int median = get_median(stack_a);
-    int count = stack_a->size; 
 
-    while (count > 0) {
-        if (stack_a->arr[0] < median)
-        {
-            pb(stack_a, stack_b); // Push to stack_b if less than median
-        } else 
-        {
-            ra(stack_a); // Rotate stack_a if greater or equal
-        }
-        count--;
-    }
+void sort_large(t_stack *stack_a, t_stack *stack_b)
+{
+    int chunk_size = (stack_a->size > 100) ? (stack_a->size / 10) : (stack_a->size / 5);
+    push_chunks_to_b(stack_a, stack_b, chunk_size);
+    push_back_to_a(stack_a, stack_b);
 }

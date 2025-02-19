@@ -6,7 +6,7 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 16:46:48 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/02/16 16:32:14 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/02/18 19:52:46 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void push_chunks(t_stack *a, t_stack *b, int chunk_size)
             i++;
         }
         else
-            ra(a->arr, a->size); // Rotate to find next chunk element
+            ra(a->arr); // Rotate to find next chunk element
     }
 }
 
@@ -47,7 +47,7 @@ void push_back_to_a(t_stack *a, t_stack *b)
         {
             while (max_idx++ < b->size)
             {
-                rrb(b->arr, b->size);
+                rrb(b->arr);
                 max_idx++;
             }
         }
