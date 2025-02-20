@@ -6,7 +6,7 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:20:43 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/02/18 23:39:43 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/02/20 14:52:12 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,8 @@ void chunk_sort(t_stack *a);
 void push_back_to_a(t_stack *stack_a, t_stack *stack_b);
 void push_chunks_to_b(t_stack *stack_a, t_stack *stack_b, int chunk_size);
 int *copy_and_sort(t_stack *stack);
-
-
+void push_chunks(t_stack *stack_a, t_stack *stack_b, int chunk_size);
+void push_back_to_a(t_stack *stack_a, t_stack *stack_b);
+void chunk_sort(t_stack *stack_a);
 
 #endif

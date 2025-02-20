@@ -6,7 +6,7 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 14:36:35 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/02/18 23:33:18 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/02/20 14:57:12 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int main(int ac, char **av)
 	stack_b->arr = (int *)calloc(stack_a->size, sizeof(int));
 	stack_b->size = 0;  // Stack B starts empty
 
-	//int i = 0;
+	
 	// printf("size of stack a %d\n", stack_a->size);
 	if (stack_a->size == 2)
 	{
@@ -47,13 +47,15 @@ int main(int ac, char **av)
 	}
 	else if (stack_a->size > 5)
 	{
-		sort_large(stack_a, stack_b);
+		chunk_sort(stack_a);
 	}
-	// while(i < stack_a->size)
-	// {
-	// 	printf("%d\n", stack_a->arr[i]);
-	// 	i++;
-	// }
+
+	int i = 0;
+	while(i < stack_a->size)
+	{
+		printf("%d\n", stack_a->arr[i]);
+		i++;
+	}
 	//int median = get_median(stack_a);
     
     

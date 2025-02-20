@@ -6,7 +6,7 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 17:29:24 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/02/18 23:39:39 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/02/20 15:27:46 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,24 +21,41 @@ void putstr(char *str)
 		len++;
 	write(1, str, len);
 }
-int find_max_index(t_stack *stack_a)
-{
-	int i;
-	int max_indx;
+// int find_max_index(t_stack *stack_a)
+// {
+// 	int i;
+// 	int max_indx;
 	
-	max_indx = 0;
-	i = 1;
-	if (stack_a->size == 0)
-		return 0;
-	while(i < stack_a->size)
-	{
-		if(stack_a->arr[i] > stack_a->arr[max_indx])
-		{
-			max_indx = i;
-		}
-		i++;
-	}
-	return max_indx;
+// 	max_indx = 0;
+// 	i = 1;
+// 	if (stack_a->size == 0)
+// 		return 0;
+// 	while(i < stack_a->size)
+// 	{
+// 		if(stack_a->arr[i] > stack_a->arr[max_indx])
+// 		{
+// 			max_indx = i;
+// 		}
+// 		i++;
+// 	}
+// 	return max_indx;
+// }
+int find_max_index(t_stack *stack)
+{
+    if (stack->size == 0) return -1;  // Handle empty stack
+
+    int max_idx = 0;
+    int max_value = stack->arr[0];
+
+    for (int i = 1; i < stack->size; i++)
+    {
+        if (stack->arr[i] > max_value)
+        {
+            max_value = stack->arr[i];
+            max_idx = i;
+        }
+    }
+    return max_idx;
 }
 
 int find_min_index(t_stack *stack_a)
