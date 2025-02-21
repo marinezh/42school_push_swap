@@ -6,7 +6,7 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:20:43 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/02/20 14:52:12 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/02/21 17:53:39 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,12 +78,18 @@ int get_median(t_stack *stack_a);
 void first_move(t_stack *stack_a, t_stack *stack_b);
 void push_chunks(t_stack *a, t_stack *b, int chunk_size);
 void push_back_to_a(t_stack *a, t_stack *b);
-void chunk_sort(t_stack *a);
+
 void push_back_to_a(t_stack *stack_a, t_stack *stack_b);
 void push_chunks_to_b(t_stack *stack_a, t_stack *stack_b, int chunk_size);
 int *copy_and_sort(t_stack *stack);
 void push_chunks(t_stack *stack_a, t_stack *stack_b, int chunk_size);
 void push_back_to_a(t_stack *stack_a, t_stack *stack_b);
-void chunk_sort(t_stack *stack_a);
+//void chunk_sort(t_stack *stack_a);
+
+
+int find_index(t_stack *stack, int num);
+void find_min_max(t_stack *stack, int start, int end, int *min, int *max);
+void chunk_sort(t_stack *a, t_stack *b, int chunk_size);
+void print_stack(t_stack *stack, char *name);
 
 #endif

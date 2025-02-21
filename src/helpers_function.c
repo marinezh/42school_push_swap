@@ -6,7 +6,7 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 17:29:24 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/02/20 15:27:46 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/02/21 17:16:17 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,23 +40,23 @@ void putstr(char *str)
 // 	}
 // 	return max_indx;
 // }
-int find_max_index(t_stack *stack)
-{
-    if (stack->size == 0) return -1;  // Handle empty stack
+// int find_max_index(t_stack *stack)
+// {
+//     if (stack->size == 0) return -1;  // Handle empty stack
 
-    int max_idx = 0;
-    int max_value = stack->arr[0];
+//     int max_idx = 0;
+//     int max_value = stack->arr[0];
 
-    for (int i = 1; i < stack->size; i++)
-    {
-        if (stack->arr[i] > max_value)
-        {
-            max_value = stack->arr[i];
-            max_idx = i;
-        }
-    }
-    return max_idx;
-}
+//     for (int i = 1; i < stack->size; i++)
+//     {
+//         if (stack->arr[i] > max_value)
+//         {
+//             max_value = stack->arr[i];
+//             max_idx = i;
+//         }
+//     }
+//     return max_idx;
+// }
 
 int find_min_index(t_stack *stack_a)
 {

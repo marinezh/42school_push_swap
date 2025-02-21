@@ -6,7 +6,7 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 14:36:35 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/02/16 17:04:04 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/02/21 17:15:05 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int main(int argc, char **argv)
 	} 
 	else
 	{
-		chunk_sort(&a);
+		chunk_sort(stack_a, stack_b);
 	}
 	// while(i < size)
 	// {

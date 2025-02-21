@@ -6,7 +6,7 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 16:46:48 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/02/20 15:30:20 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/02/21 17:15:54 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,105 +21,106 @@
 
 
 // ✅ **Push elements in chunks to Stack B**
-void push_chunks(t_stack *stack_a, t_stack *stack_b, int chunk_size)
-{
-    int i = 0;
-    int median = get_median(stack_a);
-    int rotations = 0;  // Track rotations
+// void push_chunks(t_stack *stack_a, t_stack *stack_b, int chunk_size)
+// {
+//     int i = 0;
+//     int median = get_median(stack_a);
+//     printf("median check %d\n", median);
+//     int rotations = 0;  // Track rotations
 
-    while (i < chunk_size && stack_a->size > 3)
-    {
-        if (stack_a->arr[0] <= median) // Push smaller elements to B
-        {
-            pb(stack_a, stack_b);
-            i++;
-            rotations = 0; // Reset rotation counter
-        }
-        else
-        {
-            ra(stack_a); // Rotate to find next chunk element
-            rotations++;
+//     while (i < chunk_size && stack_a->size > 3)
+//     {
+//         if (stack_a->arr[0] <= median) // Push smaller elements to B
+//         {
+//             pb(stack_a, stack_b);
+//             i++;
+//             rotations = 0; // Reset rotation counter
+//         }
+//         else
+//         {
+//             ra(stack_a); // Rotate to find next chunk element
+//             rotations++;
 
-            // **Prevent infinite rotation**
-            if (rotations >= stack_a->size)
-            {
-                 printf("Ifinite loop");
-                 break;
-            }
+//             // **Prevent infinite rotation**
+//             if (rotations >= stack_a->size)
+//             {
+//                  printf("Ifinite loop");
+//                  break;
+//             }
                
-        }
-    }
-}
+//         }
+//     }
+// }
 
-// ✅ **Sort Stack B and push back to Stack A**
-void push_back_to_a(t_stack *stack_a, t_stack *stack_b)
-{
-    while (stack_b->size > 0)
-    {
-        int max_idx = find_max_index(stack_b);
-        int original_size = stack_b->size;  // Track size before rotations
+// // ✅ **Sort Stack B and push back to Stack A**
+// void push_back_to_a(t_stack *stack_a, t_stack *stack_b)
+// {
+//     while (stack_b->size > 0)
+//     {
+//         int max_idx = find_max_index(stack_b);
+//         int original_size = stack_b->size;  // Track size before rotations
 
-        // Choose shortest path to move max to top
-        if (max_idx > stack_b->size / 2)
-        {
-            while (stack_b->arr[0] != stack_b->arr[max_idx]) 
-            {
-                rrb(stack_b);
+//         // Choose shortest path to move max to top
+//         if (max_idx > stack_b->size / 2)
+//         {
+//             while (stack_b->arr[0] != stack_b->arr[max_idx]) 
+//             {
+//                 rrb(stack_b);
 
-                // Prevent infinite loop
-                if (stack_b->size != original_size)
-                    break;
-            }
-        }
-        else
-        {
-            while (stack_b->arr[0] != stack_b->arr[max_idx])
-            {
-                rb(stack_b);
+//                 // Prevent infinite loop
+//                 if (stack_b->size != original_size)
+//                     break;
+//             }
+//         }
+//         else
+//         {
+//             while (stack_b->arr[0] != stack_b->arr[max_idx])
+//             {
+//                 rb(stack_b);
 
-                // Prevent infinite loop
-                if (stack_b->size != original_size)
-                    break;
-            }
-        }
-        pa(stack_a, stack_b);
-    }
-}
+//                 // Prevent infinite loop
+//                 if (stack_b->size != original_size)
+//                     break;
+//             }
+//         }
+//         pa(stack_a, stack_b);
+//     }
+// }
 
 // ✅ **Main sorting function (6-100 elements)**
-void chunk_sort(t_stack *stack_a)
-{
-    if (stack_a->size <= 3)
-    {
-        sort_three(stack_a);
-        return;
-    }
+// void chunk_sort(t_stack *stack_a)
+// {
+//     if (stack_a->size <= 3)
+//     {
+//         sort_three(stack_a);
+//         return;
+//     }
 
-    t_stack b;
-    b.size = 0;
-    b.arr = malloc(stack_a->size * sizeof(int));
-    if (!b.arr)
-    {
-        printf("Memory allocation failed!\n");
-        exit(EXIT_FAILURE);
-    }
+//     t_stack b;
+//     b.size = 0;
+//     b.arr = malloc(stack_a->size * sizeof(int));
+//     if (!b.arr)
+//     {
+//         printf("Memory allocation failed!\n");
+//         exit(EXIT_FAILURE);
+//     }
 
-    int chunk_size = (stack_a->size > 15) ? (stack_a->size / 5 + 3) : 3;
+//     int chunk_size = (stack_a->size > 15) ? (stack_a->size / 5 + 3) : 3;
 
-    // Push elements in chunks to Stack B
-    while (stack_a->size > 3)
-    {
-        push_chunks(stack_a, &b, chunk_size);
-    }
+//     // Push elements in chunks to Stack B
+//     while (stack_a->size > 3)
+//     {
+//         push_chunks(stack_a, &b, chunk_size);
+//     }
 
-    // Sort remaining 3 numbers in Stack A
-    sort_three(stack_a);
+//     // Sort remaining 3 numbers in Stack A
+//     sort_three(stack_a);
 
-    // Push elements back from B to A in correct order
-    push_back_to_a(stack_a, &b);
+//     // Push elements back from B to A in correct order
+//     push_back_to_a(stack_a, &b);
 
-    free(b.arr);
-}
+//     free(b.arr);
+// }
 // void first_move(t_stack *stack_a, t_stack *stack_b)
 // {
 //     int median;
