@@ -6,7 +6,7 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 13:42:55 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/02/17 17:38:57 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/02/23 22:00:39 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,20 +45,26 @@ void sort_three(t_stack *stack_a)
 void sort_four_five(t_stack *stack_a, t_stack *stack_b)
 {
 	int num_to_push = stack_a->size - 3; // Push 1 element if size=4, Push 2 if size=5
+	int min_index;
+
 	//int i = 0;
 	// Find and push the smallest elements to stack B
 	if (is_sorted(stack_a)) 
 		return;  // Skip sorting since it's already sorted
 	while (stack_b->size < num_to_push)
 	{
-		move_min_to_top(stack_a);
+		min_index = find_min_index(stack_a);
+		//printf("min inx is %d digits %d\n", min_index, stack_a->arr[i]);
+		move_to_top(stack_a, min_index);
 		pb(stack_a, stack_b);
 	}
 	// Sort the remaining three numbers
 	sort_three(stack_a);
+	
 	// Ensure `b` is sorted before pushing back
-	if (stack_b->size == 2 && stack_b->arr[0] > stack_b->arr[1])
+	if (stack_b->size == 2 && stack_b->arr[0] < stack_b->arr[1])
 		sb(stack_b);
+	
 	// Push elements back from B to A
 	while (stack_b->size > 0)
 		pa(stack_a, stack_b);

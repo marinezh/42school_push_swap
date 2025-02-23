@@ -6,7 +6,7 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 14:36:35 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/02/21 17:56:39 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/02/23 22:03:00 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,21 @@
 // 	int *arr;
 // 	int size;
 // } t_stack;
+
+// void push_all(t_stack *a, t_stack *b)
+// {
+// 	while(a->size > 0)
+// 	{
+// 		pb(a,b);
+// 	}
+	
+
+// 	while(b->size > 0)
+// 	{
+// 		pa(a,b);
+// 	}
+	
+// }
 
 int main(int ac, char **av)
 {
@@ -45,11 +60,15 @@ int main(int ac, char **av)
 	{
 		sort_four_five(stack_a, stack_b);
 	}
+	// else if (stack_a->size == 5)
+	// {
+	// 	push_all(stack_a, stack_b);
+	// }
 	else if (stack_a->size > 5)
 	{
-		chunk_sort(stack_a, stack_b, 2);
+		chunk_sort(stack_a, stack_b);
 	}
-
+	//first_move(stack_a, stack_b);
 	int i = 0;
 	while(i < stack_a->size)
 	{
