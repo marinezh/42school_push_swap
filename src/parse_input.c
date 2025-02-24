@@ -6,7 +6,7 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 15:13:37 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/02/17 20:26:34 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/02/24 14:03:12 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,3 +107,4 @@ int	*parse_input(int ac, char **av, int *size)
 	validate_input(av + 1, arr, size);
 	return (arr);
 }
+

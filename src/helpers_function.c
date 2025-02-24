@@ -6,7 +6,7 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 17:29:24 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/02/23 21:12:54 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/02/24 14:53:02 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -255,4 +255,28 @@ int *sorted_array(t_stack *stack)
     printf("\n");
 
     return sorted; // Caller must free() the returned array
+}
+void print_stack_a(t_stack *stack)
+{
+	printf("[Stack A] ");
+	for (int i = 0; i < stack->size; i++)
+		printf("%d ", stack->arr[i]);
+	printf("\n");
+}
+void print_stack_b(t_stack *stack)
+{
+	printf("[Stack B] ");
+	for (int i = 0; i < stack->size; i++)
+		printf("%d ", stack->arr[i]);
+	printf("\n");
+}
+
+// Utility function to check if stack_b is sorted in descending order
+int is_sorted_descending(t_stack *stack_b) {
+	for (int i = 0; i < stack_b->size - 1; i++) {
+		if (stack_b->arr[i] < stack_b->arr[i + 1]) {
+			return 0; // Not sorted in descending order
+		}
+	}
+	return 1; // Sorted in descending order
 }

@@ -6,7 +6,7 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 14:36:35 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/02/23 22:03:00 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/02/24 15:41:24 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,11 +70,13 @@ int main(int ac, char **av)
 	}
 	//first_move(stack_a, stack_b);
 	int i = 0;
+	printf("Final sorted A : ");
 	while(i < stack_a->size)
 	{
-		printf("%d\n", stack_a->arr[i]);
+		printf("%d ", stack_a->arr[i]);
 		i++;
 	}
+	printf("\n");
 	//int median = get_median(stack_a);
     
     

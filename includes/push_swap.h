@@ -6,7 +6,7 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:20:43 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/02/23 20:23:18 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/02/24 14:55:22 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,9 @@ int find_index(t_stack *stack, int num);
 void find_min_max(t_stack *stack, int start, int end, int *min, int *max);
 //void chunk_sort(t_stack *a, t_stack *b, int chunk_size);
 //void print_stack(t_stack *stack, char *name);
-void print_stack(t_stack *stack);
+//void print_stack(t_stack *stack);
 int is_sorted_descending(t_stack *stack_b);
+void print_stack_a(t_stack *stack);
+void print_stack_b(t_stack *stack);
 
 #endif
