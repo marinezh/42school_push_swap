@@ -6,7 +6,7 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 14:36:35 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/02/24 15:41:24 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/02/24 16:39:32 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ int main(int ac, char **av)
 	{
 		chunk_sort(stack_a, stack_b);
 	}
-	//first_move(stack_a, stack_b);
 	int i = 0;
 	printf("Final sorted A : ");
 	while(i < stack_a->size)
