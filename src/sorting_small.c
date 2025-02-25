@@ -6,7 +6,7 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 13:42:55 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/02/23 22:00:39 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/02/25 16:56:04 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void sort_three(t_stack *stack_a)
 		rra(stack_a); // 1 3 2
 		sa(stack_a);
 	}
+	printf("sort three\n");
 }
 
 void sort_four_five(t_stack *stack_a, t_stack *stack_b)

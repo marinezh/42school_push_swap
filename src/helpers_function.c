@@ -6,7 +6,7 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 17:29:24 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/02/24 14:53:02 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/02/25 19:18:11 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -268,6 +268,13 @@ void print_stack_b(t_stack *stack)
 	printf("[Stack B] ");
 	for (int i = 0; i < stack->size; i++)
 		printf("%d ", stack->arr[i]);
+	printf("\n");
+}
+void print_array(int *arr, int size)
+{
+	printf("[array] ");
+	for (int i = 0; i < size; i++)
+		printf("%d ", arr[i]);
 	printf("\n");
 }
 

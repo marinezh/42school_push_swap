@@ -6,7 +6,7 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:20:43 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/02/24 14:55:22 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/02/25 19:20:19 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ void move_to_top(t_stack *stack, int index);
 int get_median(t_stack *stack_a);
 // int get_median(int *arr, int size);
 void first_move(t_stack *stack_a, t_stack *stack_b);
+//void first_move(t_stack *stack_a, t_stack *stack_b, int chunks);
 void push_chunks(t_stack *a, t_stack *b, int chunk_size);
 void push_back_to_a(t_stack *a, t_stack *b);
 
@@ -92,6 +93,7 @@ void sort_stack_b_to_a(t_stack *stack_a, t_stack *stack_b);
 //void chunk_sort(t_stack *stack_a);
 void chunk_sort(t_stack *stack_a, t_stack *stack_b);
 int *sorted_array(t_stack *stack);
+void print_array(int *arr, int size);
 
 int find_index(t_stack *stack, int num);
 void find_min_max(t_stack *stack, int start, int end, int *min, int *max);
