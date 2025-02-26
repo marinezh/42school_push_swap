@@ -6,7 +6,7 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 17:29:24 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/02/25 19:18:11 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/02/26 13:20:49 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -224,10 +224,10 @@ int *sorted_array(t_stack *stack)
         sorted[i] = stack->arr[i];
     }
 
-    printf("\n[1] Initial Unsorted Array: ");
-    for (int i = 0; i < stack->size; i++)
-        printf("%d ", sorted[i]);
-    printf("\n");
+    // printf("\n[1] Initial Unsorted Array: ");
+    // for (int i = 0; i < stack->size; i++)
+    //     printf("%d ", sorted[i]);
+    // printf("\n");
 
     // Simple Bubble Sort with debugging (can replace with QuickSort)
     for (int i = 0; i < stack->size - 1; i++)
@@ -242,17 +242,17 @@ int *sorted_array(t_stack *stack)
                 sorted[j + 1] = temp;
 
                 // Debugging output for each swap
-                printf("[Step %d] Swapped %d and %d: ", i * stack->size + j, sorted[j], sorted[j + 1]);
-                for (int k = 0; k < stack->size; k++)
-                    printf("%d ", sorted[k]);
-                printf("\n");
+                //printf("[Step %d] Swapped %d and %d: ", i * stack->size + j, sorted[j], sorted[j + 1]);
+                // for (int k = 0; k < stack->size; k++)
+                //     printf("%d ", sorted[k]);
+                //printf("\n");
             }
         }
     }
-    printf("\n[Final] Sorted Array: ");
-    for (int i = 0; i < stack->size; i++)
-        printf("%d ", sorted[i]);
-    printf("\n");
+    //printf("\n[Final] Sorted Array: ");
+    //for (int i = 0; i < stack->size; i++)
+        //printf("%d ", sorted[i]);
+    //printf("\n");
 
     return sorted; // Caller must free() the returned array
 }
