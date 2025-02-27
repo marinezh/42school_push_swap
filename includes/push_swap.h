@@ -6,7 +6,7 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:20:43 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/02/26 18:49:11 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/02/27 18:32:09 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,5 +108,20 @@ void find_min_max(t_stack *stack, int start, int end, int *min, int *max);
 int is_sorted_descending(t_stack *stack_b);
 void print_stack_a(t_stack *stack);
 void print_stack_b(t_stack *stack);
+
+//int push_to_a_cost(t_stack *stack_b, t_stack *stack_a);
+
+int push_to_a_cost(t_stack *stack_b, int size_b);
+void push_all_to_a(t_stack *stack_a, t_stack *stack_b);
+int find_best_insert_pos(t_stack *stack_a, int num);
+int find_best_insert_pos(t_stack *stack_a, int num);
+
+
+int cost_to_top_550(t_stack *stack, int index);
+int find_best_insert_pos_550(t_stack *stack_a, int num);
+int push_to_a_cost_550(t_stack *stack_b, t_stack *stack_a);
+int push_to_b_cost_550(t_stack *stack_a);
+void push_all_to_b_550(t_stack *stack_a, t_stack *stack_b);
+void push_all_to_a_550(t_stack *stack_a, t_stack *stack_b);
 
 #endif

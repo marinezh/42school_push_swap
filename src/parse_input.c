@@ -6,7 +6,7 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 15:13:37 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/02/24 14:03:12 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/02/27 19:17:27 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	validate_input(char **av, int *arr, int *size)
 	{
 		if (!is_valid_number(av[i]))
 		{
-			printf("Error 4: Invalid number '%s'\n", av[i]);
+			printf("Error\n");
 			free(arr);
 			exit(1);
 		}

@@ -6,7 +6,7 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 14:36:35 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/02/26 16:11:09 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/02/27 16:45:15 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,23 @@
 // 	int size;
 // } t_stack;
 
-// void push_all(t_stack *a, t_stack *b)
-// {
-// 	while(a->size > 0)
-// 	{
-// 		pb(a,b);
-// 	}
-	
+void push_all(t_stack *a, t_stack *b)
+{
+	while(a->size > 0)
+	{
+		pb(a,b);
+	}
+	print_stack_a(a);
+	print_stack_b(b);
 
-// 	while(b->size > 0)
-// 	{
-// 		pa(a,b);
-// 	}
+	while(b->size > 0)
+	{
+		pa(a,b);
+	}
+	print_stack_a(a);
+	print_stack_b(b);
 	
-// }
+}
 
 int main(int ac, char **av)
 {
@@ -60,7 +63,7 @@ int main(int ac, char **av)
 	{
 		sort_four_five(stack_a, stack_b);
 	}
-	// else if (stack_a->size == 5)
+	// else if (stack_a->size == 14)
 	// {
 	// 	push_all(stack_a, stack_b);
 	// }
@@ -76,7 +79,7 @@ int main(int ac, char **av)
 	// 	printf("%d ", stack_a->arr[i]);
 	// 	i++;
 	// }
-	//printf("\n");
+	// printf("\n");
 	//int median = get_median(stack_a);
     
     

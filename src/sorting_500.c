@@ -6,7 +6,7 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 17:36:08 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/02/26 19:05:57 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/02/27 19:43:03 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,36 +24,77 @@ int has_chunk_element(t_stack *stack_a, int limit)
 	}
 	return 0;
 }
-int cost_to_top(t_stack *stack, int index)
-{
-	int cost = 0;
+// int cost_to_top(t_stack *stack, int index)
+// {
+// 	int cost = 0;
+// 	int i = 0;
+// 	if (index <= stack->size / 2)
+// 	{
+// 		while (index > 0)
+// 		{
+// 			cost++;
+// 			index--;
+// 		}
+// 	}
+// 	else
+// 	{
+// 		while (index < stack->size)
+// 		{
+// 			cost++;
+// 			index++;
+// 		}
+// 	}
+// 	printf("Cost to bring digit %d with index %d to top: %d\n", stack->arr[i], index, cost);
+// 	return cost;
+// }
 
-	if (index <= stack->size / 2)
-	{
-		while (index > 0)
-		{
-			cost++;
-			index--;
-		}
+// int push_to_b_cost(t_stack *stack_a, int limit) {
+//     int i = 0;
+// 	int j = 0;
+//     int min_cost = stack_a->size;
+//     int current_cost;
+//     int best_cost_index = -1;
+
+//     while (i < stack_a->size) {
+//         if (stack_a->arr[i] < limit) {
+//             current_cost = cost_to_top(stack_a, i);
+//             if (current_cost < min_cost) {
+//                 min_cost = current_cost;
+//                 best_cost_index = i;
+//             }
+//         }
+//         i++;
+//     }
+	
+//     printf("Best index to push digit %d is: %d\n",stack_a->arr[j], best_cost_index);
+//     return best_cost_index;
+// }
+int cost_to_top(t_stack *stack, int index) {
+	int cost;
+	//int i = 0;
+
+	if (index <= stack->size / 2) {
+		cost = index;  // Forward rotation (ra)
+		//printf("Cost to bring digit %d with index %d to bottom (ra): %d\n", stack->arr[i], index, cost);
+	} else {
+		cost = stack->size - index;  // Reverse rotation (rra)
+		//printf("Cost to bring digit %d with index %d to top (rra): %d\n", stack->arr[i], index, cost);
 	}
-	else
-	{
-		while (index < stack->size)
-		{
-			cost++;
-			index++;
-		}
-	}
+	
+	//printf("Cost to bring digit %d with index %d to top: %d\n", stack->arr[i], index, cost);
 	return cost;
 }
 int push_to_b_cost(t_stack *stack_a, int limit)
 {
 	int i = 0;
+	
 	int min_cost = stack_a->size;
 	int current_cost = 0;
 	int best_cost_index = 0;
+	
 	while(i < stack_a->size)
 	{
+		//printf("XXX LIMIT IS XXX %d\n", limit);
 		if(stack_a->arr[i] < limit)
 		{
 			current_cost = cost_to_top(stack_a, i);
@@ -66,31 +107,48 @@ int push_to_b_cost(t_stack *stack_a, int limit)
 		}
 		i++;
 	}
+	//int j = 0;
+	//printf("Best index to push digit %d is: %d\n",stack_a->arr[j], best_cost_index);
 	return (best_cost_index);
 }
-void sort_stack_b(t_stack *stack_a, t_stack *stack_b)
+// Function to find the best position in stack_a for a given number from stack_b
+int find_best_insert_pos(t_stack *stack_a, int num)
 {
-	int min = find_min_index(stack_b);
-	int max = find_max_index(stack_b);
-
-	int min_cost = push_to_b_cost(stack_b, stack_b->arr[min]);
-	int max_cost = push_to_b_cost(stack_b, stack_b->arr[max]);
+    int i = 0;
+    int best_index = 0;
+    int best_diff = __INT_MAX__;
+    
+    while (i < stack_a->size) {
+        int diff = stack_a->arr[i] - num;
+        if (diff > 0 && diff < best_diff) {
+            best_diff = diff;
+            best_index = i;
+        }
+        i++;
+    }
+	// int j = 0;
+    // printf("BEST index to push digit %d is: %d\n",stack_a->arr[j], best_index);
+    return best_index;
+}
+void push_all_to_a(t_stack *stack_a, t_stack *stack_b)
+{
+	
 	int count = stack_b->size;
 	while (count--)
 	{
-		int max_idx = find_max_index(stack_b); // Find the largest element in stack_b
-		//printf("XXX max_ind %d and the digit is %d\n", max_idx, stack_b->arr[max_idx]);
-		// Determine the best way to bring max to the top
-		move_to_top(stack_b, max_idx);
-		// print_stack_a(stack_a);
-		// print_stack_b(stack_b);
-		//Push max from stack_b to stack_a
+		// int i = 0;
+		// int best_index = push_to_b_cost(stack_b, INT_MAX);
+		// 	if (best_index == -1) break;
+		// printf("BEST INDEX of %d is %d\n", stack_b->arr[i], best_index);
+		move_to_top(stack_b, find_max_index(stack_b));
+		//printf("push to a\n");
 		pa(stack_a, stack_b);
-		// printf("Pushed from stack_b to stack_a: ");
-		// print_stack_a(stack_a);
-		// print_stack_b(stack_b);
+		
+		
 	}
+	
 }
+
 
 void first_move_500(t_stack *stack_a, t_stack *stack_b)
 {
@@ -98,91 +156,62 @@ void first_move_500(t_stack *stack_a, t_stack *stack_b)
 	int chunks = 0;
 	int chunk_size;
 	// int *chunk_limits;
-	int i, j;
+	int i = 0;
 	int *sorted = sorted_array(stack_a); //sorted copy of stack_a
-	print_array(sorted, size);
+	//print_array(sorted, size);
 	
 	
-	if(size <= 100)
-		chunks = 8;
-	else
+	if(size <= 10)
+		chunks = 2;
+	else if (size <= 20)
+		chunks = 3;
+	else if (size <= 100)
+		chunks = 6;
+	else if (size <=500)
 		chunks = 15;
 	chunk_size = size / chunks;
-	printf("chunks number %d\n", chunks);
-	printf("chunks size %d\n", chunk_size);
+	// printf("chunks number %d\n", chunks);
+	// printf("chunks size %d\n", chunk_size);
 	// printf("stack a size %d\n", size);
 
-	// chunk_limits = malloc(chunks * sizeof(int));
-	// if (!chunk_limits)
-	// {
-	// 	free(sorted);
-	// 	return;
-	// }
-
-	i = 0;
-	j = 0;
-
 	int limit ;
-	// printf("limit %d\n", limit);
+	
 	while (i < chunks)
 	{
 		// chunk_limits[i] = sorted[(i + 1) * chunk_size - 1];
 		limit = sorted[(i + 1) * chunk_size];
-		printf("Chunk %d limit: %d\n", i + 1, limit);
+		//printf("-*********Chunk %d limit**********: %d\n", i + 1, limit);
 		int temp_chunk_size = chunk_size;
-		// printf("limits %d\n", limit);
+		//printf("limits %d\n", limit);
 		while(temp_chunk_size > 0)
 		{
-			printf("temp chunk size %d\n", temp_chunk_size);
-			// j = 0;
-			// while(j < stack_a->size)
-			// {
-				// if(stack_a->arr[j] <= limit)
-				// {
-					move_to_top(stack_a, push_to_b_cost(stack_a, limit));
-					pb(stack_a, stack_b);
-				// }
-			// 	j++;
-			// }
+			//printf("temp chunk size %d\n", temp_chunk_size);
+			//printf("find_best_insert_pos %d\n", find_best_insert_pos(stack_a, limit));
+			move_to_top(stack_a, push_to_b_cost(stack_a, limit));
+			// print_stack_a(stack_a);
+			// print_stack_b(stack_b);
+			pb(stack_a, stack_b);
+			// print_stack_a(stack_a);
+			// print_stack_b(stack_b);
+
+			//printf("temp chunk size %d\n", temp_chunk_size);
 			temp_chunk_size--;
 		}
 		
 		i++;
 	}
-	// print_stack_a(stack_a);
-	// print_stack_b(stack_b);
-	sort_stack_b(stack_a, stack_b);
-	print_stack_a(stack_a);
-	print_stack_b(stack_b);
-
-
+	
 	
  	free(sorted);
-	// free(chunk_limits);
 }
-// // void sort_stack_b_500(t_stack *stack_a, t_stack *stack_b)
-// // {
-// //     int count = stack_b->size;
-// // 	while (count--)
-// // 	{
-// // 		//int i = 0;
-// // 		int max_idx = find_max_index(stack_b); // Find the largest element in stack_b
-// // 		//printf("XXX max_ind %d and the digit is %d\n", max_idx, stack_b->arr[max_idx]);
-// // 		// Determine the best way to bring max to the top
-// // 		move_to_top(stack_b, max_idx);
-// // 		// print_stack_a(stack_a);
-// // 		// print_stack_b(stack_b);
-// // 		// Push max from stack_b to stack_a
-// // 		pa(stack_a, stack_b);
-// // 		// printf("Pushed from stack_b to stack_a: ");
-// //         // print_stack_a(stack_a);
-// // 		// print_stack_b(stack_b);
-// // 	}
-// // }
 
 void chunk_sort_500(t_stack *stack_a, t_stack *stack_b) 
 {
 	first_move_500(stack_a, stack_b);
+	//sort_stack_b(stack_a, stack_b);
+	push_all_to_a(stack_a, stack_b);
+	print_stack_a(stack_a);
+	print_stack_b(stack_b);
 }
 
 

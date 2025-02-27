@@ -6,7 +6,7 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 16:07:04 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/02/16 19:05:18 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/02/27 13:56:33 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,9 +148,120 @@ int main(int argc, char **argv)
 
 	return 0;
 }
-$(SRCS_PATH)/helpers_function.c \
-	$(SRCS_PATH)/moves_ps.c \
-	$(SRCS_PATH)/moves_reverse.c \
-	$(SRCS_PATH)/moves_rotate.c \
-	$(SRCS_PATH)/sorting_big.c \
-	$(SRCS_PATH)/sorting_small.c \
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sorting_500.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/25 17:36:08 by mzhivoto          #+#    #+#             */
+/*   Updated: 2025/02/27 13:36:50 by mzhivoto         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../includes/push_swap.h"
+
+// Function to check if there are any elements in stack_a belonging to the current chunk
+int has_chunk_element(t_stack *stack_a, int limit)
+{
+	int i = 0;
+
+	while (i < stack_a->size)
+	{
+		if (stack_a->arr[i] <= limit)
+			return 1;
+	}
+	return 0;
+}
+int cost_to_top(t_stack *stack, int index)
+{
+	int cost = 0;
+
+	if (index <= stack->size / 2)
+	{
+		while (index > 0)
+		{
+			cost++;
+			index--;
+		}
+	}
+	else
+	{
+		while (index < stack->size)
+		{
+			cost++;
+			index++;
+		}
+	}
+	return cost;
+}
+int push_to_b_cost(t_stack *stack_a, int limit)
+{
+	int i = 0;
+	int min_cost = stack_a->size;
+	int current_cost = 0;
+	int best_cost_index = 0;
+	while(i < stack_a->size)
+	{
+		if(stack_a->arr[i] < limit)
+		{
+			current_cost = cost_to_top(stack_a, i);
+			//printf("current cost %d\n", current_cost);
+			if (current_cost < min_cost)
+			{
+				min_cost = current_cost;
+				best_cost_index = i;
+			}
+		}
+		i++;
+	}
+	return (best_cost_index);
+}
+
+void first_move_500(t_stack *stack_a, t_stack *stack_b)
+{
+	int size = stack_a->size;
+	int chunks = 0;
+	int chunk_size;
+	int i;
+	int *sorted = sorted_array(stack_a); //sorted copy of stack_a
+	print_array(sorted, size);
+	
+	
+	if(size <= 100)
+		chunks = 5;
+	else
+		chunks = 15;
+	chunk_size = size / chunks;
+	
+	i = 0;
+	
+	int limit ;
+	
+	while (i < chunks)
+	{
+		limit = sorted[(i + 1) * chunk_size];
+		printf("Chunk %d limit: %d\n", i + 1, limit);
+		int temp_chunk_size = chunk_size;
+				while(temp_chunk_size > 0)
+		{
+			move_to_top(stack_a, push_to_b_cost(stack_a, limit));			
+			pb(stack_a, stack_b);
+			temp_chunk_size--;
+		}
+		i++;
+	}
+	sort_stack_b(stack_a, stack_b);
+	print_stack_a(stack_a);
+	print_stack_b(stack_b);
+
+ 	free(sorted);
+}
+
+void chunk_sort_500(t_stack *stack_a, t_stack *stack_b) 
+{
+	first_move_500(stack_a, stack_b);
+}
+
+
