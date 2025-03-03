@@ -6,7 +6,7 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 15:22:58 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/02/15 16:05:32 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/02/17 20:10:20 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,47 +24,49 @@
 
 #include "../includes/push_swap.h"
 
-void ra(int *a, int sizeA)
+void	ra(t_stack *stack_a)
 {
-	int i;
-	int temp;
+	int	i;
+	int	temp;
+	int	size;
 
-	if (sizeA < 2)
-		return; 
+	size = stack_a->size;
+	if (size < 2)
+		return ;
 	i = 0;
-	temp = a[0];
-	while(i < sizeA - 1)
+	temp = stack_a->arr[0];
+	while (i < size - 1)
 	{
-		a[i] = a[i + 1];
+		stack_a->arr[i] = stack_a->arr[i + 1];
 		i++;
 	}
-	a[sizeA - 1] = temp;
+	stack_a->arr[size - 1] = temp;
 	printf("ra\n");
 }
-void rb(int *b, int sizeB)
-{
-	int i;
-	int temp;
 
-	if (sizeB < 2)
-		return;
+void	rb(t_stack *stack_b)
+{
+	int	i;
+	int	temp;
+	int	size;
+
+	size = stack_b->size;
+	if (size < 2)
+		return ;
 	i = 0;
-	temp = b[0];
-	while(i < sizeB - 1)
+	temp = stack_b->arr[0];
+	while (i < size - 1)
 	{
-		b[i] = b[i + 1];
+		stack_b->arr[i] = stack_b->arr[i + 1];
 		i++;
 	}
-	b[sizeB - 1] = temp;
+	stack_b->arr[size - 1] = temp;
 	printf("rb\n");
 }
 
-void rr(int *a, int *b, int sizeA, int sizeB)
+void	rr(t_stack *stack_a, t_stack *stack_b)
 {
-	ra(a, sizeA);
-	rb(b, sizeB);
+	ra(stack_a);
+	rb(stack_b);
 	printf("rr\n");
 }
-
-
-

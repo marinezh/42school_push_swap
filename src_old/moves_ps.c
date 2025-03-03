@@ -6,7 +6,7 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 15:12:47 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/02/16 16:10:24 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/03/03 15:15:14 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,3 +113,69 @@ void pa_big(t_stack *a, t_stack *b)
     printf("pa\n");
 }
 
+void	pa(t_stack *stack_a, t_stack *stack_b)
+{
+	int i;
+
+	// Check if stack_b is empty
+	if (stack_b->size == 0)
+		return;
+
+	// Shift stack_a elements UP to make space for new element at index 0
+	i = stack_a->size;
+	while (i > 0)
+	{
+		stack_a->arr[i] = stack_a->arr[i - 1];
+		i--;
+	}
+
+	// Move the top element from stack_b to the top of stack_a
+	stack_a->arr[0] = stack_b->arr[0];
+	(stack_a->size)++;
+
+	// Shift stack_b elements LEFT after removing the top element
+	i = 0;
+	while (i < stack_b->size - 1)
+	{
+		stack_b->arr[i] = stack_b->arr[i + 1];
+		i++;
+	}
+	(stack_b->size)--;
+
+	// Print operation
+	printf("pa\n");
+}
+
+
+void	pb(t_stack *stack_a, t_stack *stack_b)
+{
+	int i;
+
+	// Check if stack_a is empty
+	if (stack_a->size == 0)
+		return;
+
+	// Shift stack_b elements UP to make space for new element at index 0
+	i = stack_b->size;
+	while (i > 0)
+	{
+		stack_b->arr[i] = stack_b->arr[i - 1];
+		i--;
+	}
+
+	// Move the top element from stack_a to the top of stack_b
+	stack_b->arr[0] = stack_a->arr[0];
+	(stack_b->size)++;
+
+	// Shift stack_a elements LEFT after removing the top element
+	i = 0;
+	while (i < stack_a->size - 1)
+	{
+		stack_a->arr[i] = stack_a->arr[i + 1];
+		i++;
+	}
+	(stack_a->size)--;
+
+	// Print operation
+	printf("pb\n");
+}

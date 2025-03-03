@@ -6,59 +6,62 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 13:42:55 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/02/16 19:40:48 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/02/26 14:29:41 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void sort_two(int *a, int size)
+void sort_two(t_stack *stack_a)
 {
-	if(!is_sorted(a, size))
-		sa(a);
+	// int size;
+	// size = stack_a->size;
+	if(!is_sorted(stack_a))
+		sa(stack_a);
 }
 
-void sort_three(int *a, int size)
+void sort_three(t_stack *stack_a)
 {
+	int *a = stack_a->arr;
 	if (a[0] > a[1] && a[1] > a[2])
 	{
-		sa(a);
-		rra(a , size); // 3 2 1
+		sa(stack_a);
+		rra(stack_a); // 3 2 1
 	} 
 	else if (a[0] > a[2] && a[2] > a[1])
-		ra(a, size); // 3 1 2
+		ra(stack_a); // 3 1 2
 	else if (a[1] > a[0] && a[0] > a[2])
-		rra(a, size); // 2 3 1
+		rra(stack_a); // 2 3 1
 
 	else if (a[0] > a[1] && a[1] < a[2])
-		sa(a); // 2 1 3
+		sa(stack_a); // 2 1 3
 	else if (a[0] < a[1] && a[1] > a[2])
 	{ 
-		rra(a, size); // 1 3 2
-		sa(a);
+		rra(stack_a); // 1 3 2
+		sa(stack_a);
 	}
+	//printf("sort three\n");
 }
 
-// void sort_four_five(int *a, int size)
-// {
-// 	int b[2], sizeA = size, sizeB = 0;
-// 	int num_to_push = size - 3; // Push 1 element if size=4, Push 2 if size=5
+void sort_four_five(t_stack *stack_a, t_stack *stack_b)
+{
+	int num_to_push = stack_a->size - 3; 
+	int min_index;
 
-// 	// Find and push the smallest elements to stack B
-// 	if (is_sorted(a, size)) 
-// 		return;  // Skip sorting since it's already sorted
-// 	while (sizeB < num_to_push)
-// 	{
-// 		move_min_to_top(a, &sizeA);
-// 		pb(a, b, &sizeA, &sizeB);
-// 	}
-// 	// Sort the remaining three numbers
-// 	sort_three(a, 3);
-// 	// Ensure `b` is sorted before pushing back
-// 	if (sizeB == 2 && b[0] > b[1])
-// 		sa(b);
-// 	// Push elements back from B to A
-// 	while (sizeB > 0)
-// 		pa(a, b, &sizeA, &sizeB);
+	if (is_sorted(stack_a)) 
+		return;  
+	while (stack_b->size < num_to_push)
+	{
+		min_index = find_min_index(stack_a);
+		//printf("min inx is %d digits %d\n", min_index, stack_a->arr[i]);
+		move_to_top(stack_a, min_index);
+		pb(stack_a, stack_b);
+	}
+	sort_three(stack_a);
+
+	if (stack_b->size == 2 && stack_b->arr[0] < stack_b->arr[1])
+		sb(stack_b);
 	
-// }
+	while (stack_b->size > 0)
+		pa(stack_a, stack_b);
+}

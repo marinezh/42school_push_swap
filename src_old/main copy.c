@@ -6,7 +6,7 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 14:36:35 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/03/03 15:47:43 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/02/28 16:56:10 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,6 @@ int main(int ac, char **av)
 	printf("\n");
 	//int median = get_median(stack_a);
     
-	
     
 	free(stack_a->arr);
 	free(stack_b->arr);
