@@ -6,13 +6,16 @@
 #    By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/10 14:19:08 by mzhivoto          #+#    #+#              #
-#    Updated: 2025/02/06 12:56:12 by mzhivoto         ###   ########.fr        #
+#    Updated: 2025/03/03 12:41:21 by mzhivoto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+# Library name
+NAME = libft.a
+
 # Compiler and flags
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -I./includes/
+CFLAGS = -Wall -Wextra -Werror -I../includes/
 
 # Source files and object files
 SRC = ft_bzero.c\
@@ -61,9 +64,6 @@ SRC = ft_bzero.c\
 	
 
 OBJ = $(SRC:.c=.o)
-
-# Library name
-NAME = libft.a
 
 # Default rule to create the library
 all: $(NAME)

@@ -6,7 +6,7 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 18:21:28 by mzhivoto          #+#    #+#             */
-/*   Updated: 2024/11/19 15:29:37 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/02/28 16:07:11 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,13 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdint.h>
+# include <fcntl.h>
+# include <stdarg.h>
+// # include <stddef.h>
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1
+# endif
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
@@ -51,5 +58,20 @@ char	*ft_strtrim(char const *s1, char const *set);
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 char	*ft_itoa(int n);
 char	**ft_split(char const *s, char c);
+
+int	ft_putchar(char c);
+int	ft_putstr(char *str);
+int	ft_putnbr(int nb);
+int	ft_puthex(unsigned int n, int lowercase);
+int	ft_put_unsigned(unsigned int n);
+int	ft_putptr(void *ptr);
+int	ft_printf(const char *format, ...);
+
+char	*get_next_line(int fd);
+//void	*ft_memcpy(void *dest, const void *src, size_t n);
+char	*str_join(char *s1, const char *s2);
+char	*find_newline(const char *str);
+char	*extract_line(char **buffer);
+char	*read_to_buffer(int fd, char *buffer);
 
 #endif

@@ -6,11 +6,13 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 15:13:37 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/02/27 19:17:27 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/03/03 12:50:32 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+#include "../includes/libft.h"
+
 
 int	is_valid_number(char *str)
 {
@@ -21,7 +23,7 @@ int	is_valid_number(char *str)
 		i++;
 	while (str[i])
 	{
-		if (!isdigit(str[i]))
+		if (!ft_isdigit(str[i]))
 			return (0);
 		i++;
 	}
