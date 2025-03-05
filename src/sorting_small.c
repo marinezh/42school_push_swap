@@ -6,18 +6,20 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 13:42:55 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/02/26 14:29:41 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/03/05 17:33:03 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "push_swap.h"
+
 
 void sort_two(t_stack *stack_a)
 {
 	// int size;
 	// size = stack_a->size;
-	if(!is_sorted(stack_a))
-		sa(stack_a);
+	//if(!is_sorted(stack_a))
+	sa(stack_a);
+	
 }
 
 void sort_three(t_stack *stack_a)
@@ -48,13 +50,13 @@ void sort_four_five(t_stack *stack_a, t_stack *stack_b)
 	int num_to_push = stack_a->size - 3; 
 	int min_index;
 
-	if (is_sorted(stack_a)) 
-		return;  
+	// if (is_sorted(stack_a)) 
+	// 	return;  
 	while (stack_b->size < num_to_push)
 	{
 		min_index = find_min_index(stack_a);
 		//printf("min inx is %d digits %d\n", min_index, stack_a->arr[i]);
-		move_to_top(stack_a, min_index);
+		move_to_top_a(stack_a, min_index);
 		pb(stack_a, stack_b);
 	}
 	sort_three(stack_a);
@@ -64,4 +66,5 @@ void sort_four_five(t_stack *stack_a, t_stack *stack_b)
 	
 	while (stack_b->size > 0)
 		pa(stack_a, stack_b);
+	
 }

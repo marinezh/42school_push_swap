@@ -6,7 +6,7 @@
 #    By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/10 14:19:08 by mzhivoto          #+#    #+#              #
-#    Updated: 2025/03/03 12:47:08 by mzhivoto         ###   ########.fr        #
+#    Updated: 2025/03/05 14:51:17 by mzhivoto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,6 @@ SRC = $(SRCS_PATH)/main.c \
 	$(SRCS_PATH)/sorting_small.c \
 	$(SRCS_PATH)/sorting_100.c \
 	$(SRCS_PATH)/sorting_500.c \
-	$(SRCS_PATH)/sort_500.c \
 	$(SRCS_PATH)/moves_ps.c \
 	$(SRCS_PATH)/moves_reverse.c \
 	$(SRCS_PATH)/moves_rotate.c \

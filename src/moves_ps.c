@@ -6,11 +6,12 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 15:12:47 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/02/23 21:34:46 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/03/05 15:01:26 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "push_swap.h"
+#include "libft.h"
 
 void	sa(t_stack *stack_a)
 {
@@ -21,20 +22,20 @@ void	sa(t_stack *stack_a)
 	temp = stack_a->arr[0];
 	stack_a->arr[0] = stack_a->arr[1];
 	stack_a->arr[1] = temp;
-	printf("sa\n");
+	ft_putstr("sa\n");
 }
 
 void	sb(t_stack *stack_b)
 {
 	sa(stack_b);
-	printf("sb\n");
+	ft_putstr("sb\n");
 }
 
 void	ss(t_stack *stack_a, t_stack *stack_b)
 {
 	sa(stack_a);
 	sb(stack_b);
-	printf("ss\n");
+	ft_putstr("ss\n");
 }
 
 // void	pa(t_stack *stack_a, t_stack *stack_b)
@@ -84,7 +85,7 @@ void	pa(t_stack *stack_a, t_stack *stack_b)
 	(stack_b->size)--;
 
 	// Print operation
-	printf("pa\n");
+	ft_putstr("pa\n");
 }
 
 
@@ -137,6 +138,6 @@ void	pb(t_stack *stack_a, t_stack *stack_b)
 	(stack_a->size)--;
 
 	// Print operation
-	printf("pb\n");
+	ft_putstr("pb\n");
 }
 

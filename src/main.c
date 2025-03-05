@@ -6,35 +6,17 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 14:36:35 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/03/05 01:13:33 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/03/05 18:33:11 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
-#include "../includes/libft.h"
+#include "push_swap.h"
+#include "libft.h"
 
-// typedef struct s_stack {
-// 	int *arr;
-// 	int size;
-// } t_stack;
 
-void push_all(t_stack *a, t_stack *b)
-{
-	while(a->size > 0)
-	{
-		pb(a,b);
-	}
-	print_stack_a(a);
-	print_stack_b(b);
 
-	while(b->size > 0)
-	{
-		pa(a,b);
-	}
-	print_stack_a(a);
-	print_stack_b(b);
-	
-}
+
+
 
 int main(int ac, char **av)
 {
@@ -52,8 +34,10 @@ int main(int ac, char **av)
 
 	
 	// printf("size of stack a %d\n", stack_a->size);
-	if (!stack_a)
+	if (is_sorted(stack_a))
 		return 0;
+	if (!stack_a)
+		ft_putstr_fd("Error\n", 2);
 	else if (stack_a->size == 1)	
 		ft_putstr_fd("Error\n", 2);
 	else if (stack_a->size == 2)
@@ -72,22 +56,35 @@ int main(int ac, char **av)
 	// {
 	// 	push_all(stack_a, stack_b);
 	// }
-	else if (stack_a->size > 5)
+	else if (stack_a->size <= 100)
+	{
+		//chunk_sort(stack_a, stack_b);
+		chunk_sort_100(stack_a, stack_b);
+	}
+	else if (stack_a->size <= 500)
 	{
 		//chunk_sort(stack_a, stack_b);
 		chunk_sort_500(stack_a, stack_b);
 	}
-	int i = 0;
-	printf("Final sorted A : ");
-	while(i < stack_a->size)
+	else if (stack_a->size > 500)
 	{
-		printf("%d ", stack_a->arr[i]);
-		i++;
+		//chunk_sort(stack_a, stack_b);
+		chunk_sort_500(stack_a, stack_b);
 	}
-	printf("\n");
-	//int median = get_median(stack_a);
+	// int i = 0;
+	// printf("Final sorted A : ");
+	// while(i < stack_a->size)
+	// {
+	// 	printf("%d ", stack_a->arr[i]);
+	// 	i++;
+	// }
+	// printf("\n");
+	// //int median = get_median(stack_a);
     
-	
+	// if(is_sorted(stack_a) == 1)
+	// 	printf("YES");
+	// else 
+	// 	printf("NO");
     
 	free(stack_a->arr);
 	free(stack_b->arr);

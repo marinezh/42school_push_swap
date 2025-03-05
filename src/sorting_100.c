@@ -6,11 +6,11 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 14:38:25 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/02/26 18:48:59 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/03/05 16:05:46 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "push_swap.h"
 
 
 
@@ -81,7 +81,7 @@ void sort_stack_b(t_stack *stack_a, t_stack *stack_b)
 		int max_idx = find_max_index(stack_b); // Find the largest element in stack_b
 		//printf("XXX max_ind %d and the digit is %d\n", max_idx, stack_b->arr[max_idx]);
 		// Determine the best way to bring max to the top
-		move_to_top(stack_b, max_idx);
+		move_to_top_b(stack_b, max_idx);
 		// print_stack_a(stack_a);
 		// print_stack_b(stack_b);
 		//Push max from stack_b to stack_a

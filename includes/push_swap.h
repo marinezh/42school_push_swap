@@ -6,7 +6,7 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:20:43 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/03/05 00:42:52 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/03/05 17:15:48 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,8 @@ int find_min_index(t_stack *stack_a);
 int find_max_index(t_stack *stack_a);
 int is_sorted(t_stack *stack_a);
 //void move_min_to_top(t_stack *stack_a);
-void move_to_top(t_stack *stack, int index);
+void move_to_top_a(t_stack *stack, int index);
+void move_to_top_b(t_stack *stack, int index);
 int get_median(t_stack *stack_a);
 // int get_median(int *arr, int size);
 void first_move(t_stack *stack_a, t_stack *stack_b);
@@ -95,6 +96,7 @@ void sort_stack_b_to_a(t_stack *stack_a, t_stack *stack_b);
 void sort_stack_b_500(t_stack *stack_a, t_stack *stack_b);
 //void chunk_sort(t_stack *stack_a);
 void chunk_sort(t_stack *stack_a, t_stack *stack_b);
+void chunk_sort_100(t_stack *stack_a, t_stack *stack_b);
 void chunk_sort_500(t_stack *stack_a, t_stack *stack_b);
 int *sorted_array(t_stack *stack);
 void print_array(int *arr, int size);

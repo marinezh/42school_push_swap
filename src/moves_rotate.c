@@ -6,7 +6,7 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 15:22:58 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/02/17 20:10:20 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/03/05 15:01:33 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "push_swap.h"
+#include "libft.h"
 
 void	ra(t_stack *stack_a)
 {
@@ -41,7 +42,7 @@ void	ra(t_stack *stack_a)
 		i++;
 	}
 	stack_a->arr[size - 1] = temp;
-	printf("ra\n");
+	ft_putstr("ra\n");
 }
 
 void	rb(t_stack *stack_b)
@@ -61,12 +62,12 @@ void	rb(t_stack *stack_b)
 		i++;
 	}
 	stack_b->arr[size - 1] = temp;
-	printf("rb\n");
+	ft_putstr("rb\n");
 }
 
 void	rr(t_stack *stack_a, t_stack *stack_b)
 {
 	ra(stack_a);
 	rb(stack_b);
-	printf("rr\n");
+	ft_putstr("rr\n");
 }

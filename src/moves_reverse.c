@@ -6,11 +6,12 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 15:43:21 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/02/17 20:07:28 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/03/05 15:01:29 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "push_swap.h"
+#include "libft.h"
 
 void	rra(t_stack *stack_a)
 {
@@ -29,7 +30,7 @@ void	rra(t_stack *stack_a)
 		i--;
 	}
 	stack_a->arr[0] = temp;
-	printf("rra\n");
+	ft_putstr("rra\n");
 }
 
 void	rrb(t_stack *stack_b)
@@ -49,7 +50,7 @@ void	rrb(t_stack *stack_b)
 		i--;
 	}
 	stack_b->arr[0] = temp;
-	printf("rrb\n");
+	ft_putstr("rrb\n");
 }
 
 void	rrr(t_stack *stack_a, t_stack *stack_b)
@@ -58,5 +59,5 @@ void	rrr(t_stack *stack_a, t_stack *stack_b)
 		return ;
 	rra(stack_a);
 	rrb(stack_b);
-	printf("rrr\n");
+	ft_putstr("rrr\n");
 }
