@@ -6,11 +6,12 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 14:36:35 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/03/03 15:47:43 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/03/05 01:13:33 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+#include "../includes/libft.h"
 
 // typedef struct s_stack {
 // 	int *arr;
@@ -51,7 +52,11 @@ int main(int ac, char **av)
 
 	
 	// printf("size of stack a %d\n", stack_a->size);
-	if (stack_a->size == 2)
+	if (!stack_a)
+		return 0;
+	else if (stack_a->size == 1)	
+		ft_putstr_fd("Error\n", 2);
+	else if (stack_a->size == 2)
 	{
 		sort_two(stack_a);
 	}

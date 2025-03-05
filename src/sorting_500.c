@@ -6,7 +6,7 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 17:36:08 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/02/27 19:43:03 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/03/05 01:31:23 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,24 +112,24 @@ int push_to_b_cost(t_stack *stack_a, int limit)
 	return (best_cost_index);
 }
 // Function to find the best position in stack_a for a given number from stack_b
-int find_best_insert_pos(t_stack *stack_a, int num)
-{
-    int i = 0;
-    int best_index = 0;
-    int best_diff = __INT_MAX__;
+// int find_best_insert_pos(t_stack *stack_a, int num)
+// {
+//     int i = 0;
+//     int best_index = 0;
+//     int best_diff = __INT_MAX__;
     
-    while (i < stack_a->size) {
-        int diff = stack_a->arr[i] - num;
-        if (diff > 0 && diff < best_diff) {
-            best_diff = diff;
-            best_index = i;
-        }
-        i++;
-    }
-	// int j = 0;
-    // printf("BEST index to push digit %d is: %d\n",stack_a->arr[j], best_index);
-    return best_index;
-}
+//     while (i < stack_a->size) {
+//         int diff = stack_a->arr[i] - num;
+//         if (diff > 0 && diff < best_diff) {
+//             best_diff = diff;
+//             best_index = i;
+//         }
+//         i++;
+//     }
+// 	// int j = 0;
+//     // printf("BEST index to push digit %d is: %d\n",stack_a->arr[j], best_index);
+//     return best_index;
+// }
 void push_all_to_a(t_stack *stack_a, t_stack *stack_b)
 {
 	

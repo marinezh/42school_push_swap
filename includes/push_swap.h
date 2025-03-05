@@ -6,7 +6,7 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:20:43 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/02/27 18:32:09 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/03/05 00:42:52 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ typedef struct s_stack {
 
 void	putstr(char *str);
 int	is_valid_number(char *str);
-int	safe_atoi(char *str, int *num);
+long long	safe_atoi(char *str, int *num);
 int	has_duplicates(int *arr, int size);
 int	*parse_input(int ac, char **av, int *size);
 void sort_two(t_stack *stack_a);

@@ -6,21 +6,12 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 17:29:24 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/02/26 13:20:49 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/03/05 01:29:56 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void putstr(char *str)
-{
-	int len;
-
-	len = 0;
-	while(str[len])
-		len++;
-	write(1, str, len);
-}
 int find_max_index(t_stack *stack_a)
 {
 	int i;
