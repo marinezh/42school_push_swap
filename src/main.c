@@ -6,7 +6,7 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 14:36:35 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/03/05 18:33:11 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/03/06 00:26:15 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,18 +52,12 @@ int main(int ac, char **av)
 	{
 		sort_four_five(stack_a, stack_b);
 	}
-	// else if (stack_a->size == 14)
-	// {
-	// 	push_all(stack_a, stack_b);
-	// }
 	else if (stack_a->size <= 100)
 	{
-		//chunk_sort(stack_a, stack_b);
 		chunk_sort_100(stack_a, stack_b);
 	}
 	else if (stack_a->size <= 500)
 	{
-		//chunk_sort(stack_a, stack_b);
 		chunk_sort_500(stack_a, stack_b);
 	}
 	else if (stack_a->size > 500)
@@ -71,6 +65,14 @@ int main(int ac, char **av)
 		//chunk_sort(stack_a, stack_b);
 		chunk_sort_500(stack_a, stack_b);
 	}
+
+    
+	free(stack_a->arr);
+	free(stack_b->arr);
+	free(stack_a);
+	free(stack_b);
+	return 0;
+}
 	// int i = 0;
 	// printf("Final sorted A : ");
 	// while(i < stack_a->size)
@@ -85,10 +87,3 @@ int main(int ac, char **av)
 	// 	printf("YES");
 	// else 
 	// 	printf("NO");
-    
-	free(stack_a->arr);
-	free(stack_b->arr);
-	free(stack_a);
-	free(stack_b);
-	return 0;
-}

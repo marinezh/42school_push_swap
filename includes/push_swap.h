@@ -6,7 +6,7 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:20:43 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/03/05 17:15:48 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/03/06 00:33:06 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,9 @@ void	putstr(char *str);
 int	is_valid_number(char *str);
 long long	safe_atoi(char *str, int *num);
 int	has_duplicates(int *arr, int size);
+void	rank_numbers(int *arr, int size);
 int	*parse_input(int ac, char **av, int *size);
+void	validate_input(char **av, int *arr, int *size, int should_free);
 void sort_two(t_stack *stack_a);
 void sort_three(t_stack *stack_a);
 void sort_four_five(t_stack *stack_a, t_stack *stack_b);

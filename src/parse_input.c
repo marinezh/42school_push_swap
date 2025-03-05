@@ -6,7 +6,7 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 15:13:37 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/03/05 18:33:05 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/03/06 00:33:48 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	is_valid_number(char *str)
 	i = 0;
 	if (str[i] == '-' || str[i] == '+')
 		i++;
-	if (!str[i] || ft_strlen(str) > 11)
+	if (!str[i] || ft_strlen(str) > 11) // 11 is the max length for "-2147483648"
 		return (0);
 	while (str[i])
 	{
@@ -31,6 +31,7 @@ int	is_valid_number(char *str)
 	}
 	return (1);
 }
+
 int	count_words(char *str)
 {
 	int	count;
@@ -67,10 +68,12 @@ long long	safe_atoi(char *str, int *num)
 			sign = -1;
 		i++;
 	}
+	if (!ft_isdigit(str[i])) // Ensure at least one digit is present
+        return (0);
 	while (str[i])
 	{
 		if (!ft_isdigit(str[i]))
-			return (0);
+			return (-1);
 		res = res * 10 + (str[i] - '0');
 		if ((res * sign) > INT_MAX || (res * sign) < INT_MIN)
 			return (0);
@@ -105,6 +108,8 @@ void	free_split(char **splits)
 	int	i;
 
 	i = 0;
+	if (!splits) // Prevent freeing NULL pointer
+        return;
 	while (splits[i])
 	{
 		free(splits[i]);
@@ -113,59 +118,130 @@ void	free_split(char **splits)
 	free(splits);
 }
 
-void	validate_input(char **av, int *arr, int *size)
-{
-	int	i;
+// void	validate_input(char **av, int *arr, int *size)
+// {
+// 	int	i;
 
-	i = 0;
-	while (i < *size)
-	{
-		if (!is_valid_number(av[i]))
-		{
-			ft_putstr_fd("Error\n", 2);
-			free(arr);
-			exit(1);
-		}
-		if (!safe_atoi(av[i], &arr[i]))
-		{
-			ft_putstr_fd("Error\n", 2);
-			printf("Error 5: Number '%s' is out of range\n", av[i]);
-			free(arr);
-			exit(1);
-		}
-		i++;
-	}
-	if (has_duplicates(arr, *size))
-	{
-		ft_putstr_fd("Error\n", 2);
-		free(arr);
-		exit(1);
-	}
+// 	i = 0;
+// 	while (i < *size)
+// 	{
+// 		if (!is_valid_number(av[i]))
+// 		{
+// 			ft_putstr_fd("Error\n", 2);
+// 			free(arr);
+// 			exit(1);
+// 		}
+// 		if (!safe_atoi(av[i], &arr[i]))
+// 		{
+// 			ft_putstr_fd("Error\n", 2);
+// 			//printf("Error 5: Number '%s' is out of range\n", av[i]);
+// 			free(arr);
+// 			exit(1);
+// 		}
+// 		i++;
+// 	}
+// 	if (has_duplicates(arr, *size))
+// 	{
+// 		ft_putstr_fd("Error\n", 2);
+// 		free(arr);
+// 		exit(1);
+// 	}
+// }
+void	validate_input(char **av, int *arr, int *size, int should_free)
+{
+    int	i;
+
+    i = 0;
+    while (i < *size)
+    {
+        if (!is_valid_number(av[i]) || !safe_atoi(av[i], &arr[i]))
+        {
+            ft_putstr_fd("Error\n", 2);
+            if (should_free)
+                free(arr);
+            exit(1);
+        }
+        i++;
+    }
+    if (has_duplicates(arr, *size))
+    {
+        ft_putstr_fd("Error\n", 2);
+        if (should_free)
+            free(arr);
+        exit(1);
+    }
 }
 
+
+// int	*parse_input(int ac, char **av, int *size)
+// {
+// 	int		*arr;
+// 	char	**args;
+
+// 	if (ac == 2)
+// 	{
+// 		args = ft_split(av[1], ' ');
+// 		 if (!args)
+//     	{
+//         	ft_putstr_fd("Error\n", 2);
+//         	exit(1);
+//     	}
+// 		*size = count_words(av[1]);
+// 	}
+// 	else if (ac > 2)
+// 	{
+// 		args = av + 1;
+// 		*size = ac - 1;
+// 	}
+// 	arr = malloc(sizeof(int) * (*size));
+// 	if (!arr)
+// 	{
+// 		ft_putstr("Error\n");
+// 		exit(1);
+// 	}
+// 	validate_input(args, arr, size, 1);
+// 	if (ac == 2)
+// 		free_split(args);
+// 	return (arr);
+// }
 int	*parse_input(int ac, char **av, int *size)
 {
 	int		*arr;
 	char	**args;
+	int		should_free;
 
 	if (ac == 2)
 	{
 		args = ft_split(av[1], ' ');
+		if (!args)
+		{
+			ft_putstr_fd("Error\n", 2);
+			exit(1);
+		}
 		*size = count_words(av[1]);
+		should_free = 1; // We must free `arr` in case of error
 	}
 	else if (ac > 2)
 	{
 		args = av + 1;
 		*size = ac - 1;
+		should_free = 0; // `args` is not dynamically allocated, do not free
 	}
+
 	arr = malloc(sizeof(int) * (*size));
 	if (!arr)
 	{
-		ft_putstr("Error\n");
+		ft_putstr_fd("Error\n", 2);
+		if (ac == 2) // Free dynamically allocated `args`
+			free_split(args);
 		exit(1);
 	}
-	validate_input(args, arr, size);
+
+	validate_input(args, arr, size, should_free);
+
 	if (ac == 2)
 		free_split(args);
+	rank_numbers(arr, *size);
 	return (arr);
 }
+

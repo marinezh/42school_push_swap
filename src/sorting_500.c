@@ -6,7 +6,7 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 17:36:08 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/03/05 18:01:16 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/03/06 00:43:07 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int cost_to_top(t_stack *stack, int index)
 		cost = stack->size - index;  // Reverse rotation (rra)
 		//printf("Cost to bring digit %d with index %d to top (rra): %d\n", stack->arr[i], index, cost);
 	}
-	
 	//printf("Cost to bring digit %d with index %d to top: %d\n", stack->arr[i], index, cost);
 	return cost;
 }
@@ -90,7 +89,7 @@ int chunk_count(int size)
 	else if (size <= 500)
 		chunks = 10;
 	else if (size > 500)
-		chunks = 25;
+		chunks = 50;
 	return chunks;
 }
 
@@ -121,22 +120,16 @@ void first_move_500(t_stack *stack_a, t_stack *stack_b)
 		{
 			//printf("temp chunk size %d\n", temp_chunk_size);
 			//printf("find_best_insert_pos %d\n", find_best_insert_pos(stack_a, limit));
-	
 			//printf("MOVING TO B");
 			move_to_top_a(stack_a, push_to_b_cost(stack_a, limit));
 				// print_stack_a(stack_a);
 				// print_stack_b(stack_b);
 			pb(stack_a, stack_b);
-			//printf("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n");
 				//print_stack_a(stack_a);
 				// print_stack_b(stack_b);
-			
-			
-
 			//printf("temp chunk size %d\n", temp_chunk_size);
 			temp_chunk_size--;
 		}
-		
 		i++;
 	}
 	
@@ -146,11 +139,7 @@ void first_move_500(t_stack *stack_a, t_stack *stack_b)
 
 void chunk_sort_100(t_stack *stack_a, t_stack *stack_b) 
 {
-	
-
 	first_move_500(stack_a, stack_b);
-	
-	
 	//sort_stack_b(stack_a, stack_b);
 	push_all_to_a(stack_a, stack_b);
 	// print_stack_a(stack_a);
@@ -159,11 +148,7 @@ void chunk_sort_100(t_stack *stack_a, t_stack *stack_b)
 
 void chunk_sort_500(t_stack *stack_a, t_stack *stack_b) 
 {
-	
-
 	first_move_500(stack_a, stack_b);
-	
-	
 	//sort_stack_b(stack_a, stack_b);
 	push_all_to_a(stack_a, stack_b);
 	// print_stack_a(stack_a);
