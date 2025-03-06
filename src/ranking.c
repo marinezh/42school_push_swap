@@ -6,7 +6,7 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 00:32:13 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/03/06 00:34:40 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/03/06 22:46:40 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	rank_numbers(int *arr, int size)
 		{
 			if (arr[i] == sorted[j])
 			{
-				arr[i] = j; // Assign the rank
+				arr[i] = j + 1; // Assign the rank
 				break;
 			}
 		}

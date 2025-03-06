@@ -6,7 +6,7 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 17:29:24 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/03/06 01:55:42 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/03/07 00:33:37 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -206,27 +206,27 @@ int *sorted_array(t_stack *stack)
 
     return sorted; // Caller must free() the returned array
 }
-void print_stack_a(t_stack *stack)
-{
-	printf("[Stack A] ");
-	for (int i = 0; i < stack->size; i++)
-		printf("%d ", stack->arr[i]);
-	printf("\n");
-}
-void print_stack_b(t_stack *stack)
-{
-	printf("[Stack B] ");
-	for (int i = 0; i < stack->size; i++)
-		printf("%d ", stack->arr[i]);
-	printf("\n");
-}
-void print_array(int *arr, int size)
-{
-	printf("[array] ");
-	for (int i = 0; i < size; i++)
-		printf("%d ", arr[i]);
-	printf("\n");
-}
+// void print_stack_a(t_stack *stack)
+// {
+// 	printf("[Stack A] ");
+// 	for (int i = 0; i < stack->size; i++)
+// 		printf("%d ", stack->arr[i]);
+// 	printf("\n");
+// }
+// void print_stack_b(t_stack *stack)
+// {
+// 	printf("[Stack B] ");
+// 	for (int i = 0; i < stack->size; i++)
+// 		printf("%d ", stack->arr[i]);
+// 	printf("\n");
+// }
+// void print_array(int *arr, int size)
+// {
+// 	printf("[array] ");
+// 	for (int i = 0; i < size; i++)
+// 		printf("%d ", arr[i]);
+// 	printf("\n");
+// }
 
 // Utility function to check if stack_b is sorted in descending order
 // int is_sorted_descending(t_stack *stack_b) {

@@ -6,7 +6,7 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 14:36:35 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/03/06 02:28:26 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/03/07 00:33:42 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,9 @@ int main(int ac, char **av)
         sort_three(stack_a);
     else if (stack_a->size == 4 || stack_a->size == 5)
         sort_four_five(stack_a, stack_b);
-    else if (stack_a->size <= 100)
+    else if (stack_a->size < 500)
         chunk_sort_100(stack_a, stack_b);
-    else if (stack_a->size <= 500)
+    else if (stack_a->size == 500)
         chunk_sort_500(stack_a, stack_b);
     else
         chunk_sort_500(stack_a, stack_b);

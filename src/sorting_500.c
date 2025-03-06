@@ -6,7 +6,7 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 17:36:08 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/03/06 02:44:11 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/03/07 00:33:32 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,24 @@ int push_to_b_cost(t_stack *stack_a, int limit)
 	//printf("Best index to push digit %d is: %d\n",stack_a->arr[j], best_cost_index);
 	return (best_cost_index);
 }
+int find_best_insert_pos(t_stack *stack_a, int num)
+{
+    int i = 0;
+    int best_index = 0;
+    int best_diff = __INT_MAX__;
+    
+    while (i < stack_a->size) {
+        int diff = stack_a->arr[i] - num;
+        if (diff > 0 && diff < best_diff) {
+            best_diff = diff;
+            best_index = i;
+        }
+        i++;
+    }
+	// int j = 0;
+    // printf("BEST index to push digit %d is: %d\n",stack_a->arr[j], best_index);
+    return best_index;
+}
 
 void push_all_to_a(t_stack *stack_a, t_stack *stack_b)
 {
@@ -70,9 +88,12 @@ void push_all_to_a(t_stack *stack_a, t_stack *stack_b)
 		move_to_top_b(stack_b, find_max_index(stack_b));
 		// print_stack_a(stack_a);
 		// print_stack_b(stack_b);
+		
+
+		// printf("PUSHING BACK TO A\n");
 		pa(stack_a, stack_b);
 		
-		//print_stack_a(stack_a);
+		// print_stack_a(stack_a);
 		// print_stack_b(stack_b);
 	}
 }
@@ -84,11 +105,12 @@ int chunk_count(int size)
 		chunks = 2;
 	// else if (size <= 11)
 	// 	chunks = 3;
-	else if (size <= 24)
+	// else if (size <= 24)
+	// 	chunks = 4;
+	else if (size < 500)
 		chunks = 4;
-	else if (size <= 100)
-		chunks = 5;
-	else if (size <= 500)
+
+	else if (size == 500)
 		chunks = 20;
 	else if (size > 500)
 		chunks = 50;
@@ -102,9 +124,12 @@ void first_move_500(t_stack *stack_a, t_stack *stack_b)
 	int chunk_size;
 	// int *chunk_limits;
 	int i = 0;
+	// printf("A BEFORE SORTING");
+	// print_stack_a(stack_a);
 	int *sorted = sorted_array(stack_a); //sorted copy of stack_a
-	//print_array(sorted, size);
-	
+	// printf("A AFTER SORTING");
+	// print_array(sorted, size);
+
 	chunk_size = size / chunks;
 	// printf("chunks number %d\n", chunks);
 	// printf("chunks size %d\n", chunk_size);
@@ -117,24 +142,27 @@ void first_move_500(t_stack *stack_a, t_stack *stack_b)
 		limit = sorted[(i + 1) * chunk_size];
 		// printf("-XXXXXXXX*********CHUNK LIMIT %d **********XXXXXXXXX: %d\n", i + 1, limit);
 		int temp_chunk_size = chunk_size;
-		//printf("limits %d\n", limit);
 		while(temp_chunk_size > 0)
 		{
-			//printf("temp chunk size %d\n", temp_chunk_size);
 			//printf("find_best_insert_pos %d\n", find_best_insert_pos(stack_a, limit));
-			//printf("MOVING TO B");
-			move_to_top_a(stack_a, push_to_b_cost(stack_a, limit));
+			int push_b_cost = push_to_b_cost(stack_a, limit);
+			//int push_b_cost_2 = find_best_insert_pos(stack_a, limit);
+			// printf("!!!push to be cost %d, num is %d\n", push_b_cost, stack_a->arr[push_b_cost]);
+			// printf("!!!push to be cost_2 %d, num is %d\n", push_b_cost_2, stack_a->arr[push_b_cost]);
+			// printf("MOVING TO B");
+			
+			move_to_top_a(stack_a, push_b_cost);
 				// print_stack_a(stack_a);
 				// print_stack_b(stack_b);
 			pb(stack_a, stack_b);
 				// print_stack_a(stack_a);
 				// print_stack_b(stack_b);
-			//printf("temp chunk size %d\n", temp_chunk_size);
+			// printf("temp chunk size %d\n", temp_chunk_size);
 			temp_chunk_size--;
 		}
 		i++;
 	}
-	
+
 	
  	free(sorted);
 }
@@ -143,7 +171,19 @@ void chunk_sort_100(t_stack *stack_a, t_stack *stack_b)
 {
 	first_move_500(stack_a, stack_b);
 	//sort_stack_b(stack_a, stack_b);
+	// printf("stack A size check %d\n", stack_a->size);
+
+	if(!is_sorted(stack_a))
+	{
+		if(stack_a->size == 2)
+			sa(stack_a);
+		else if(stack_a->size == 3)
+			sort_three(stack_a);
+	}
+	
+	
 	push_all_to_a(stack_a, stack_b);
+	// printf("PUSHING BACK TO A\n");
 	// print_stack_a(stack_a);
 	// print_stack_b(stack_b);
 }
@@ -153,6 +193,7 @@ void chunk_sort_500(t_stack *stack_a, t_stack *stack_b)
 	first_move_500(stack_a, stack_b);
 	//sort_stack_b(stack_a, stack_b);
 	push_all_to_a(stack_a, stack_b);
+	
 	// print_stack_a(stack_a);
 	// print_stack_b(stack_b);
 }
