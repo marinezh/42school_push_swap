@@ -6,7 +6,7 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 17:36:08 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/03/06 00:43:07 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/03/06 02:44:11 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,12 +82,14 @@ int chunk_count(int size)
 
 	if(size <= 10)
 		chunks = 2;
-	else if (size <= 20)
-		chunks = 3;
+	// else if (size <= 11)
+	// 	chunks = 3;
+	else if (size <= 24)
+		chunks = 4;
 	else if (size <= 100)
 		chunks = 5;
 	else if (size <= 500)
-		chunks = 10;
+		chunks = 20;
 	else if (size > 500)
 		chunks = 50;
 	return chunks;
@@ -113,7 +115,7 @@ void first_move_500(t_stack *stack_a, t_stack *stack_b)
 	{
 		// chunk_limits[i] = sorted[(i + 1) * chunk_size - 1];
 		limit = sorted[(i + 1) * chunk_size];
-		//printf("-XXXXXXXX*********CHUNK LIMIT %d **********XXXXXXXXX: %d\n", i + 1, limit);
+		// printf("-XXXXXXXX*********CHUNK LIMIT %d **********XXXXXXXXX: %d\n", i + 1, limit);
 		int temp_chunk_size = chunk_size;
 		//printf("limits %d\n", limit);
 		while(temp_chunk_size > 0)
@@ -125,7 +127,7 @@ void first_move_500(t_stack *stack_a, t_stack *stack_b)
 				// print_stack_a(stack_a);
 				// print_stack_b(stack_b);
 			pb(stack_a, stack_b);
-				//print_stack_a(stack_a);
+				// print_stack_a(stack_a);
 				// print_stack_b(stack_b);
 			//printf("temp chunk size %d\n", temp_chunk_size);
 			temp_chunk_size--;
