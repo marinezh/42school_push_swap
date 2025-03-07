@@ -6,12 +6,12 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 15:12:47 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/03/05 15:01:26 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/03/07 17:43:26 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
 #include "libft.h"
+#include "push_swap.h"
 
 void	sa(t_stack *stack_a)
 {
@@ -57,12 +57,12 @@ void	ss(t_stack *stack_a, t_stack *stack_b)
 // }
 void	pa(t_stack *stack_a, t_stack *stack_b)
 {
-	int i;
+	int	i;
 
+	i = 0;
 	// Check if stack_b is empty
 	if (stack_b->size == 0)
-		return;
-
+		return ;
 	// Shift stack_a elements UP to make space for new element at index 0
 	i = stack_a->size;
 	while (i > 0)
@@ -70,11 +70,9 @@ void	pa(t_stack *stack_a, t_stack *stack_b)
 		stack_a->arr[i] = stack_a->arr[i - 1];
 		i--;
 	}
-
 	// Move the top element from stack_b to the top of stack_a
 	stack_a->arr[0] = stack_b->arr[0];
 	(stack_a->size)++;
-
 	// Shift stack_b elements LEFT after removing the top element
 	i = 0;
 	while (i < stack_b->size - 1)
@@ -83,11 +81,9 @@ void	pa(t_stack *stack_a, t_stack *stack_b)
 		i++;
 	}
 	(stack_b->size)--;
-
 	// Print operation
 	ft_putstr("pa\n");
 }
-
 
 // void	pb(t_stack *stack_a, t_stack *stack_b)
 // {
@@ -107,15 +103,13 @@ void	pa(t_stack *stack_a, t_stack *stack_b)
 // 	printf("pb\n");
 // }
 
-
 void	pb(t_stack *stack_a, t_stack *stack_b)
 {
-	int i;
+	int	i;
 
 	// Check if stack_a is empty
 	if (stack_a->size == 0)
-		return;
-
+		return ;
 	// Shift stack_b elements UP to make space for new element at index 0
 	i = stack_b->size;
 	while (i > 0)
@@ -123,11 +117,9 @@ void	pb(t_stack *stack_a, t_stack *stack_b)
 		stack_b->arr[i] = stack_b->arr[i - 1];
 		i--;
 	}
-
 	// Move the top element from stack_a to the top of stack_b
 	stack_b->arr[0] = stack_a->arr[0];
 	(stack_b->size)++;
-
 	// Shift stack_a elements LEFT after removing the top element
 	i = 0;
 	while (i < stack_a->size - 1)
@@ -136,8 +128,6 @@ void	pb(t_stack *stack_a, t_stack *stack_b)
 		i++;
 	}
 	(stack_a->size)--;
-
 	// Print operation
 	ft_putstr("pb\n");
 }
-

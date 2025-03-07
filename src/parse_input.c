@@ -6,13 +6,12 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 15:13:37 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/03/07 03:10:19 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/03/07 19:12:01 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-#include "push_swap.h"
 #include "libft.h"
+#include "push_swap.h"
 
 int	is_valid_number(char *str)
 {
@@ -21,7 +20,8 @@ int	is_valid_number(char *str)
 	i = 0;
 	if (str[i] == '-' || str[i] == '+')
 		i++;
-	if (!str[i] || ft_strlen(str) > 11) // 11 is the max length for "-2147483648"
+	if (!str[i] || ft_strlen(str) > 11)
+		// 11 is the max length for "-2147483648"
 		return (0);
 	while (str[i])
 	{
@@ -69,7 +69,7 @@ long long	safe_atoi(char *str, int *num)
 		i++;
 	}
 	if (!ft_isdigit(str[i])) // Ensure at least one digit is present
-        return (0);
+		return (0);
 	while (str[i])
 	{
 		if (!ft_isdigit(str[i]))
@@ -109,7 +109,7 @@ void	free_split(char **splits)
 
 	i = 0;
 	if (!splits) // Prevent freeing NULL pointer
-        return;
+		return ;
 	while (splits[i])
 	{
 		free(splits[i]);
@@ -149,29 +149,28 @@ void	free_split(char **splits)
 // }
 void	validate_input(char **av, int *arr, int *size, int should_free)
 {
-    int	i;
+	int	i;
 
-    i = 0;
-    while (i < *size)
-    {
-        if (!is_valid_number(av[i]) || !safe_atoi(av[i], &arr[i]))
-        {
-            ft_putstr_fd("Error\n", 2);
-            if (should_free)
-                free(arr);
-            exit(1);
-        }
-        i++;
-    }
-    if (has_duplicates(arr, *size))
-    {
-        ft_putstr_fd("Error\n", 2);
-        if (should_free)
-            free(arr);
-        exit(1);
-    }
+	i = 0;
+	while (i < *size)
+	{
+		if (!is_valid_number(av[i]) || !safe_atoi(av[i], &arr[i]))
+		{
+			ft_putstr_fd("Error\n", 2);
+			if (should_free)
+				free(arr);
+			exit(1);
+		}
+		i++;
+	}
+	if (has_duplicates(arr, *size))
+	{
+		ft_putstr_fd("Error\n", 2);
+		if (should_free)
+			free(arr);
+		exit(1);
+	}
 }
-
 
 // int	*parse_input(int ac, char **av, int *size)
 // {
@@ -181,7 +180,7 @@ void	validate_input(char **av, int *arr, int *size, int should_free)
 // 	if (ac == 2)
 // 	{
 // 		args = ft_split(av[1], ' ');
-// 		 if (!args)
+// 			if (!args)
 //     	{
 //         	ft_putstr_fd("Error\n", 2);
 //         	exit(1);
@@ -206,22 +205,32 @@ void	validate_input(char **av, int *arr, int *size, int should_free)
 // }
 int	*parse_input(int ac, char **av, int *size)
 {
-	int		*arr;
-	char	**args;
-	int		should_free;
+	int *arr;
+	char **args;
+	int should_free;
+	int i = 0;
 
+	// if (av[i][0] == ' ' || av[i][0] == '\0')
+	// 	ft_putstr_fd("Error\n", 2);
+
+	while (av[i] != NULL)
+	{
+		if (av[i][0] == '\0' || av[i][0] == ' ')
+			return (ft_putstr_fd("Error\n", 2), NULL);
+		i++;
+	}
 	if (ac == 2)
 	{
-		args = ft_split(av[1], ' ');
+		args = ft_split(av[1], ' '); // make sepatare function
 		if (!args)
 		{
 			ft_putstr_fd("Error\n", 2);
-			exit(1);
+			return (NULL);
 		}
 		*size = count_words(av[1]);
 		should_free = 1; // We must free `arr` in case of error
 	}
-	else if (ac > 2)
+	else if (ac > 2) // make separate function
 	{
 		args = av + 1;
 		*size = ac - 1;
@@ -244,4 +253,3 @@ int	*parse_input(int ac, char **av, int *size)
 	rank_numbers(arr, *size);
 	return (arr);
 }
-
