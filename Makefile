@@ -6,7 +6,7 @@
 #    By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/10 14:19:08 by mzhivoto          #+#    #+#              #
-#    Updated: 2025/03/06 00:34:12 by mzhivoto         ###   ########.fr        #
+#    Updated: 2025/03/08 00:48:19 by mzhivoto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ LIBFT_PATH = ./libft
 LIBFT = $(LIBFT_PATH)/libft.a
 SRC = $(SRCS_PATH)/main.c \
 	$(SRCS_PATH)/parse_input.c \
+	$(SRCS_PATH)/check_input.c \
 	$(SRCS_PATH)/helpers_function.c \
 	$(SRCS_PATH)/sorting_small.c \
 	$(SRCS_PATH)/sorting_100.c \

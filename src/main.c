@@ -6,7 +6,7 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 14:36:35 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/03/07 19:07:56 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/03/07 21:32:55 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,17 +37,17 @@ int	main(int ac, char **av)
 	stack_a = (t_stack *)ft_calloc(1, sizeof(t_stack));
 	if (!stack_a)
 		return (1);
-
 	stack_a->arr = parse_input(ac, av, &stack_a->size);
 	if (!stack_a->arr)
-		return (free(stack_a), 1); // catch all possible leaks from erors from parsing here
-	stack_b = (t_stack *)ft_calloc(1, sizeof(t_stack)); // Allocate stack_b after we know stack_a->size
+		return (free(stack_a), 1);
+	// catch all possible leaks from erors from parsing here
+	stack_b = (t_stack *)ft_calloc(1, sizeof(t_stack));
+	// Allocate stack_b after we know stack_a->size
 	if (!stack_b)
 	{
 		free(stack_a->arr);
 		free(stack_a);
-		ft_putstr_fd("Error\n", 2);
-		exit(1);
+		return (1);
 	}
 	// Allocate stack_b->arr safely
 	if (stack_a->size > 0)
@@ -55,7 +55,6 @@ int	main(int ac, char **av)
 	else
 		stack_b->arr = NULL;
 	stack_b->size = 0; // Stack B starts empty
-	
 	if (is_sorted(stack_a))
 	{
 		free(stack_a->arr);
