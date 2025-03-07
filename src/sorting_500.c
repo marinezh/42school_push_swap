@@ -6,7 +6,7 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 17:36:08 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/03/07 01:35:32 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/03/07 03:11:46 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,26 +79,41 @@ void push_all_to_a(t_stack *stack_a, t_stack *stack_b)
 		// print_stack_b(stack_b);
 	}
 }
+// int chunk_count(int size)
+// {
+// 	int chunks = 0;
+
+// 	if(size <= 10)
+// 		chunks = 2;
+// 	// else if (size <= 11)
+// 	// 	chunks = 3;
+// 	else if (size <= 50)
+// 		chunks = 4;
+// 	else if (size <= 100)
+// 		chunks = 10;
+// 	else if (size < 500)
+// 		chunks = 15;
+
+// 	else if (size == 500)
+// 		chunks = 20;
+// 	else if (size > 500)
+// 		chunks = 50;
+// 	return chunks;
+// }
 int chunk_count(int size)
 {
-	int chunks = 0;
-
-	if(size <= 10)
-		chunks = 2;
-	// else if (size <= 11)
-	// 	chunks = 3;
+	if (size <= 10)
+		return 2;
 	else if (size <= 50)
-		chunks = 4;
+		return 4;
 	else if (size <= 100)
-		chunks = 10;
+		return 8;  // Changed from 10
 	else if (size < 500)
-		chunks = 15;
-
+		return 12; // Changed from 15
 	else if (size == 500)
-		chunks = 20;
-	else if (size > 500)
-		chunks = 50;
-	return chunks;
+		return 20;
+	else
+		return 50;
 }
 
 void first_move_500(t_stack *stack_a, t_stack *stack_b)
@@ -110,7 +125,7 @@ void first_move_500(t_stack *stack_a, t_stack *stack_b)
 	int i = 0;
 	// printf("A BEFORE SORTING");
 	// print_stack_a(stack_a);
-	int *sorted = sorted_array(stack_a); //sorted copy of stack_a
+	int *sorted = sorted_array(stack_a->arr, size); //sorted copy of stack_a
 	if (!sorted) return;
 	// printf("A AFTER SORTING");
 	// print_array(sorted, size);
@@ -190,4 +205,3 @@ void chunk_sort_500(t_stack *stack_a, t_stack *stack_b)
 	// print_stack_a(stack_a);
 	// print_stack_b(stack_b);
 }
-

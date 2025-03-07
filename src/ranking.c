@@ -6,19 +6,46 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 00:32:13 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/03/06 22:46:40 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/03/07 03:18:55 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "libft.h"
 
-void	rank_numbers(int *arr, int size)
+void	bubble_sort(int *arr, int size)
+{
+	int	i, j, temp, swapped;
+
+	i = 0;
+	while (i < size - 1)
+	{
+		j = 0;
+		swapped = 0;
+		while (j < size - i - 1)
+		{
+			if (arr[j] > arr[j + 1])
+			{
+				temp = arr[j];
+				arr[j] = arr[j + 1];
+				arr[j + 1] = temp;
+				swapped = 1;
+			}
+			j++;
+		}
+		if (!swapped) // Stops early if already sorted
+			break;
+		i++;
+	}
+}
+int	*sorted_array(int *arr, int size)
 {
 	int	*sorted;
-	int	i, j;
+	int	i;
 
-	// Step 1: Allocate memory for sorted copy
+	if (!arr || size == 0)
+		return (NULL); // Edge case: Empty array
+
 	sorted = (int *)malloc(size * sizeof(int));
 	if (!sorted)
 	{
@@ -26,36 +53,42 @@ void	rank_numbers(int *arr, int size)
 		exit(1);
 	}
 
-	// Step 2: Copy original array to sorted array
-	for (i = 0; i < size; i++)
+	// Copy elements using a loop
+	i = 0;
+	while (i < size)
+	{
 		sorted[i] = arr[i];
-
-	// Step 3: Sort the copied array (simple Bubble Sort for small inputs)
-	for (i = 0; i < size - 1; i++)
-	{
-		for (j = 0; j < size - i - 1; j++)
-		{
-			if (sorted[j] > sorted[j + 1])
-			{
-				int temp = sorted[j];
-				sorted[j] = sorted[j + 1];
-				sorted[j + 1] = temp;
-			}
-		}
+		i++;
 	}
+	bubble_sort(sorted, size);
+	return (sorted); // Caller must free() the returned array
+}
 
-	// Step 4: Replace original array with ranks
-	for (i = 0; i < size; i++)
+// Rank the numbers based on sorted order
+void	rank_numbers(int *arr, int size)
+{
+	int i, j;
+	int *sorted;
+
+	if (!arr || size == 0)
+		return;
+	sorted = sorted_array(arr, size);
+	if (!sorted)
+		return;
+	i = 0;
+	while (i < size)
 	{
-		for (j = 0; j < size; j++)
+		j = 0;
+		while (j < size)
 		{
 			if (arr[i] == sorted[j])
 			{
-				arr[i] = j + 1; // Assign the rank
+				arr[i] = j + 1; // Assign the rank (1-based index)
 				break;
 			}
+			j++;
 		}
+		i++;
 	}
-
 	free(sorted);
 }

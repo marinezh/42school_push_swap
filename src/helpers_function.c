@@ -6,7 +6,7 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 17:29:24 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/03/07 01:25:37 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/03/07 02:14:19 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,53 +159,7 @@ int get_median(t_stack *stack_a)
         return (sorted[(stack_a->size / 2) - 1] + sorted[stack_a->size / 2]) / 2.0;	
 }
 
-int *sorted_array(t_stack *stack)
-{
-    int *sorted = malloc(stack->size * sizeof(int));
-    if (!sorted)
-    {
-        ft_putstr("Memory allocation failed!\n");
-        exit(EXIT_FAILURE);
-    }
 
-    // Copy the original stack into sorted array
-    for (int i = 0; i < stack->size; i++)
-    {
-        sorted[i] = stack->arr[i];
-    }
-
-    // printf("\n[1] Initial Unsorted Array: ");
-    // for (int i = 0; i < stack->size; i++)
-    //     printf("%d ", sorted[i]);
-    // printf("\n");
-
-    // Simple Bubble Sort with debugging (can replace with QuickSort)
-    for (int i = 0; i < stack->size - 1; i++)
-    {
-        for (int j = 0; j < stack->size - i - 1; j++)
-        {
-            if (sorted[j] > sorted[j + 1])
-            {
-                // Swap elements
-                int temp = sorted[j];
-                sorted[j] = sorted[j + 1];
-                sorted[j + 1] = temp;
-
-                // Debugging output for each swap
-                //printf("[Step %d] Swapped %d and %d: ", i * stack->size + j, sorted[j], sorted[j + 1]);
-                // for (int k = 0; k < stack->size; k++)
-                //     printf("%d ", sorted[k]);
-                //printf("\n");
-            }
-        }
-    }
-    //printf("\n[Final] Sorted Array: ");
-    //for (int i = 0; i < stack->size; i++)
-        //printf("%d ", sorted[i]);
-    //printf("\n");
-
-    return sorted; // Caller must free() the returned array
-}
 // void print_stack_a(t_stack *stack)
 // {
 // 	printf("[Stack A] ");
