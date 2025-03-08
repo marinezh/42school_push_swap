@@ -6,7 +6,7 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 00:46:29 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/03/08 15:52:30 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/03/08 00:52:18 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int	is_valid_number(char *str)
 	if (str[i] == '-' || str[i] == '+')
 		i++;
 	if (!str[i] || ft_strlen(str) > 11)
+		// 11 is the max length for "-2147483648"
 		return (0);
 	while (str[i])
 	{
@@ -98,4 +99,18 @@ int	has_duplicates(int *arr, int size)
 		i++;
 	}
 	return (0);
+}
+void	free_args(char **args)
+{
+	int	i;
+
+	i = 0;
+	if (!args) // Prevent freeing NULL pointer
+		return ;
+	while (args[i])
+	{
+		free(args[i]);
+		i++;
+	}
+	free(args);
 }

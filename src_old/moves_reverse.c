@@ -6,12 +6,12 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 15:43:21 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/03/08 16:02:24 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/03/05 15:01:29 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "push_swap.h"
+#include "libft.h"
 
 void	rra(t_stack *stack_a)
 {
@@ -51,4 +51,13 @@ void	rrb(t_stack *stack_b)
 	}
 	stack_b->arr[0] = temp;
 	ft_putstr("rrb\n");
+}
+
+void	rrr(t_stack *stack_a, t_stack *stack_b)
+{
+	if (stack_a->size < 2 && stack_b->size < 2)
+		return ;
+	rra(stack_a);
+	rrb(stack_b);
+	ft_putstr("rrr\n");
 }

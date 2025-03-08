@@ -6,7 +6,7 @@
 #    By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/10 14:19:08 by mzhivoto          #+#    #+#              #
-#    Updated: 2025/03/08 00:48:19 by mzhivoto         ###   ########.fr        #
+#    Updated: 2025/03/08 19:00:00 by mzhivoto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,12 +27,13 @@ SRC = $(SRCS_PATH)/main.c \
 	$(SRCS_PATH)/check_input.c \
 	$(SRCS_PATH)/helpers_function.c \
 	$(SRCS_PATH)/sorting_small.c \
-	$(SRCS_PATH)/sorting_100.c \
-	$(SRCS_PATH)/sorting_500.c \
+	$(SRCS_PATH)/sorting_large.c \
 	$(SRCS_PATH)/moves_ps.c \
 	$(SRCS_PATH)/moves_reverse.c \
 	$(SRCS_PATH)/moves_rotate.c \
 	$(SRCS_PATH)/ranking.c \
+	$(SRCS_PATH)/free.c \
+	$(SRCS_PATH)/chunk_utils.c \
 	
 
 OBJ := $(patsubst $(SRCS_PATH)/%.c, $(OBJS_PATH)/%.o, $(SRC))

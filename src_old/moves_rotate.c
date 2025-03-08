@@ -6,7 +6,7 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 15:22:58 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/03/08 16:31:52 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/03/07 17:40:15 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,9 @@ void	rb(t_stack *stack_b)
 	ft_putstr("rb\n");
 }
 
-// void	rr(t_stack *stack_a, t_stack *stack_b)
-// {
-// 	ra(stack_a);
-// 	rb(stack_b);
-// 	ft_putstr("rr\n");
-// }
+void	rr(t_stack *stack_a, t_stack *stack_b)
+{
+	ra(stack_a);
+	rb(stack_b);
+	ft_putstr("rr\n");
+}
