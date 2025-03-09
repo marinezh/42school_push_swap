@@ -6,7 +6,7 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 15:47:32 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/03/08 15:52:57 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/03/09 21:19:22 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,14 @@ void	free_stacks(t_stack *stack_a, t_stack *stack_b)
 {
 	if (stack_a)
 	{
-		free(stack_a->arr);
+		if (stack_a->arr)
+			free(stack_a->arr);
 		free(stack_a);
 	}
 	if (stack_b)
 	{
-		free(stack_b->arr);
+		if (stack_b->arr)
+			free(stack_b->arr);
 		free(stack_b);
 	}
 }

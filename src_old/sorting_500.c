@@ -6,7 +6,7 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 17:36:08 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/03/08 18:57:42 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/03/09 16:55:50 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,88 +116,88 @@ int chunk_count(int size)
 		return 50;
 }
 
-// void first_move_500(t_stack *stack_a, t_stack *stack_b)
-// {
-// 	int size = stack_a->size;
-// 	int chunks = chunk_count(size);
-// 	int chunk_size;
-// 	// int *chunk_limits;
-// 	int i = 0;
-// 	// printf("A BEFORE SORTING");
-// 	// print_stack_a(stack_a);
-// 	int *sorted = sorted_array(stack_a->arr, size); //sorted copy of stack_a
-// 	if (!sorted) return;
-// 	// printf("A AFTER SORTING");
-// 	// print_array(sorted, size);
-
-// 	chunk_size = size / chunks;
-// 	// printf("chunks number %d\n", chunks);
-// 	// printf("chunks size %d\n", chunk_size);
-// 	// printf("stack a size %d\n", size);
-
-// 	int limit ;
-// 	while (i < chunks)
-// 	{
-// 		// chunk_limits[i] = sorted[(i + 1) * chunk_size - 1];
-// 		limit = sorted[((i + 1) * chunk_size) - 1];
-// 		// printf("-XXXXXXXX*********CHUNK LIMIT %d **********XXXXXXXXX: %d\n", i + 1, limit);
-// 		int temp_chunk_size = chunk_size;
-// 		while(temp_chunk_size > 0)
-// 		{
-// 			//printf("find_best_insert_pos %d\n", find_best_insert_pos(stack_a, limit));
-// 			int push_b_cost = push_to_b_cost(stack_a, limit);
-// 			//int push_b_cost_2 = find_best_insert_pos(stack_a, limit);
-// 			// printf("!!!push to be cost %d, num is %d\n", push_b_cost, stack_a->arr[push_b_cost]);
-// 			// printf("!!!push to be cost_2 %d, num is %d\n", push_b_cost_2, stack_a->arr[push_b_cost]);
-// 			// printf("MOVING TO B");
-			
-// 			move_to_top_a(stack_a, push_b_cost);
-// 				// print_stack_a(stack_a);
-// 				// print_stack_b(stack_b);
-// 			pb(stack_a, stack_b);
-// 				// print_stack_a(stack_a);
-// 				// print_stack_b(stack_b);
-// 			// printf("temp chunk size %d\n", temp_chunk_size);
-// 			temp_chunk_size--;
-// 		}
-// 		i++;
-// 	}
-//  	free(sorted);
-// }
-void first_move_chunk_sort(t_stack *stack_a, t_stack *stack_b)
+void first_move_500(t_stack *stack_a, t_stack *stack_b)
 {
 	int size = stack_a->size;
 	int chunks = chunk_count(size);
-	int chunk_size = size / chunks;
+	int chunk_size;
+	// int *chunk_limits;
 	int i = 0;
-	int *sorted = sorted_array(stack_a->arr, size); // Sorted copy of stack_a
+	// printf("A BEFORE SORTING");
+	// print_stack_a(stack_a);
+	int *sorted = sorted_array(stack_a->arr, size); //sorted copy of stack_a
+	if (!sorted) return;
+	// printf("A AFTER SORTING");
+	// print_array(sorted, size);
 
-	if (!sorted)
-		return;
+	chunk_size = size / chunks;
+	// printf("chunks number %d\n", chunks);
+	// printf("chunks size %d\n", chunk_size);
+	// printf("stack a size %d\n", size);
 
+	int limit ;
 	while (i < chunks)
 	{
-		int limit_index = ((i + 1) * chunk_size) - 1;
-		if (limit_index >= size) 
-			limit_index = size - 1;
-		
-		int limit = sorted[limit_index];
+		// chunk_limits[i] = sorted[(i + 1) * chunk_size - 1];
+		limit = sorted[((i + 1) * chunk_size) - 1];
+		// printf("-XXXXXXXX*********CHUNK LIMIT %d **********XXXXXXXXX: %d\n", i + 1, limit);
 		int temp_chunk_size = chunk_size;
-
-		while (temp_chunk_size > 0)
+		while(temp_chunk_size > 0)
 		{
+			//printf("find_best_insert_pos %d\n", find_best_insert_pos(stack_a, limit));
 			int push_b_cost = push_to_b_cost(stack_a, limit);
-			if (push_b_cost == -1) 
-				break;
-
+			//int push_b_cost_2 = find_best_insert_pos(stack_a, limit);
+			// printf("!!!push to be cost %d, num is %d\n", push_b_cost, stack_a->arr[push_b_cost]);
+			// printf("!!!push to be cost_2 %d, num is %d\n", push_b_cost_2, stack_a->arr[push_b_cost]);
+			// printf("MOVING TO B");
+			
 			move_to_top_a(stack_a, push_b_cost);
+				// print_stack_a(stack_a);
+				// print_stack_b(stack_b);
 			pb(stack_a, stack_b);
+				// print_stack_a(stack_a);
+				// print_stack_b(stack_b);
+			// printf("temp chunk size %d\n", temp_chunk_size);
 			temp_chunk_size--;
 		}
 		i++;
 	}
-	free(sorted);
+ 	free(sorted);
 }
+// void first_move_chunk_sort(t_stack *stack_a, t_stack *stack_b)
+// {
+// 	int size = stack_a->size;
+// 	int chunks = chunk_count(size);
+// 	int chunk_size = size / chunks;
+// 	int i = 0;
+// 	int *sorted = sorted_array(stack_a->arr, size); // Sorted copy of stack_a
+
+// 	if (!sorted)
+// 		return;
+
+// 	while (i < chunks)
+// 	{
+// 		int limit_index = ((i + 1) * chunk_size) - 1;
+// 		if (limit_index >= size) 
+// 			limit_index = size - 1;
+		
+// 		int limit = sorted[limit_index];
+// 		int temp_chunk_size = chunk_size;
+
+// 		while (temp_chunk_size > 0)
+// 		{
+// 			int push_b_cost = push_to_b_cost(stack_a, limit);
+// 			if (push_b_cost == -1) 
+// 				break;
+
+// 			move_to_top_a(stack_a, push_b_cost);
+// 			pb(stack_a, stack_b);
+// 			temp_chunk_size--;
+// 		}
+// 		i++;
+// 	}
+// 	free(sorted);
+// }
 
 void chunk_sort_100(t_stack *stack_a, t_stack *stack_b) 
 {
