@@ -6,7 +6,7 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 17:29:24 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/03/09 17:39:27 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/03/12 18:45:00 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,24 +110,24 @@ void	move_to_top_b(t_stack *stack, int index)
 		}
 	}
 }
-// void print_stack_a(t_stack *stack)
-// {
-// 	ft_printf("[Stack A] ");
-// 	for (int i = 0; i < stack->size; i++)
-// 		ft_printf("%d ", stack->arr[i]);
-// 	printf("\n");
-// }
-// void print_stack_b(t_stack *stack)
-// {
-// 	ft_printf("[Stack B] ");
-// 	for (int i = 0; i < stack->size; i++)
-// 		ft_printf("%d ", stack->arr[i]);
-// 	ft_printf("\n");
-// }
-// void print_array(int *arr, int size)
-// {
-// 	ft_printf("[array] ");
-// 	for (int i = 0; i < size; i++)
-// 		ft_printf("%d ", arr[i]);
-// 	ft_printf("\n");
-// }
+void print_stack_a(t_stack *stack)
+{
+	ft_printf("[Stack A] ");
+	for (int i = 0; i < stack->size; i++)
+		ft_printf("%d ", stack->arr[i]);
+	printf("\n");
+}
+void print_stack_b(t_stack *stack)
+{
+	ft_printf("[Stack B] ");
+	for (int i = 0; i < stack->size; i++)
+		ft_printf("%d ", stack->arr[i]);
+	ft_printf("\n");
+}
+void print_array(int *arr, int size)
+{
+	ft_printf("[array] ");
+	for (int i = 0; i < size; i++)
+		ft_printf("%d ", arr[i]);
+	ft_printf("\n");
+}

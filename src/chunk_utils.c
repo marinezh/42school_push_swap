@@ -6,7 +6,7 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 14:38:25 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/03/09 17:41:00 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/03/12 18:53:39 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	push_to_b_cost(t_stack *stack_a, int limit)
 		if (stack_a->arr[i] < limit)
 		{
 			current_cost = cost_to_top(stack_a, i);
-			//printf("Index: %d, Value: %d, Cost: %d\n", i, stack_a->arr[i], current_cost);
+			printf("Index: %d, Value: %d, Cost: %d\n", i, stack_a->arr[i], current_cost);
 			if (current_cost < min_cost)
 			{
 				min_cost = current_cost;
@@ -48,7 +48,7 @@ int	push_to_b_cost(t_stack *stack_a, int limit)
 		}
 		i++;
 	}
-	//printf("Best index to move: %d (Value: %d, Cost: %d)\n", best_cost_index, stack_a->arr[best_cost_index], min_cost);
+	printf("Best index to move: %d (Value: %d, Cost: %d)\n", best_cost_index, stack_a->arr[best_cost_index], min_cost);
 	return (best_cost_index);
 }
 

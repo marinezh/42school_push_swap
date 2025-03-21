@@ -6,7 +6,7 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 17:36:08 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/03/09 18:11:10 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/03/12 19:14:33 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,11 @@ void chanks_pushing_to_b(t_stack *stack_a, t_stack *stack_b, \
 	{
 		best_cost_index = push_to_b_cost(stack_a, limit);
 		move_to_top_a(stack_a, best_cost_index);
+		print_stack_a(stack_a);
+		print_stack_b(stack_b);
 		pb(stack_a, stack_b);
+		print_stack_a(stack_a);
+		print_stack_b(stack_b);
 		chunk->temp_chunk_size--;
 	}
 }
@@ -56,13 +60,27 @@ void	first_move(t_stack *stack_a, t_stack *stack_b)
 	if (!sorted)
 		return ;
 	chunk.chunk_size = stack_a->size / chunk.chunks;
-
+	printf("chunk size %d\n", chunk.chunk_size);
 	while (i < chunk.chunks)
 	{
 		if (i == chunk.chunks - 1)
+		{
 			limit = max + 1;
+			printf("XXX limit: %d\n", limit);
+			printf("XXX max: %d\n", max);
+		}
+			
 		else
+		{
 			limit = sorted[(i + 1) * chunk.chunk_size];
+
+			printf("ZZZ limit: %d\n", limit);
+			printf("ZZZ limit: %d\n", limit);
+			printf("ZZZ max: %d\n", max);
+		}
+			
+
+		printf("****** LIMITS ****** %d\n", limit);
 		chunk.temp_chunk_size = chunk.chunk_size;
 		chanks_pushing_to_b(stack_a, stack_b, &chunk, limit);
 		i++;
@@ -82,4 +100,7 @@ void	chunk_sort(t_stack *stack_a, t_stack *stack_b)
 		pb(stack_a, stack_b);
 	}
 	push_all_to_a(stack_a, stack_b);
+	printf("PUSH BACK TO A\n");
+	print_stack_a(stack_a);
+	print_stack_b(stack_b);
 }

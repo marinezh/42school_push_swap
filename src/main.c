@@ -6,7 +6,7 @@
 /*   By: mzhivoto <mzhivoto@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 14:36:35 by mzhivoto          #+#    #+#             */
-/*   Updated: 2025/03/09 21:19:04 by mzhivoto         ###   ########.fr       */
+/*   Updated: 2025/03/12 18:45:51 by mzhivoto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ int	main(int ac, char **av)
 	if (is_sorted(stack_a))
 		return (free_stacks(stack_a, stack_b), 0);
 	push_swap(stack_a, stack_b);
+	printf("SORTED A: \n");
+	print_stack_a(stack_a);
 	return (free_stacks(stack_a, stack_b), 0);
 }
 // int	main(int ac, char **av)
@@ -82,14 +84,13 @@ int	main(int ac, char **av)
 // 		return (free_stacks(stack_a, stack_b), 0);
 
 // 	// ft_printf("before sorting A : ");
-// 	// print_stack_a(stack_a);	
+// 	// print_stack_a(stack_a);
 // 	push_swap(stack_a, stack_b);
-
 
 // 	// ft_printf("Final sorted A : ");
 // 	// print_stack_a(stack_a);
 // 	// ft_printf("\n");
-	
+
 // 	// if(is_sorted(stack_a) == 1)
 // 	// 	printf("YES\n");
 // 	// else
